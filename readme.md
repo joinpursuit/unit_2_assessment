@@ -20,6 +20,8 @@ The user should be able to:
 
 ## Styling
 
+Assume default styling unless explicitly articulated here. **Do not** utilize CSS Reset.
+
 - **Body**
   - Monospace font for all text (inputs excepted - default is fine).
   - `lavender` background color.
