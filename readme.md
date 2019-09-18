@@ -22,6 +22,8 @@ The user should be able to:
 
 Assume default styling unless explicitly articulated here. **Do not** utilize CSS Reset.
 
+Your website should be responsive and work on screens of different sizes.
+
 - **Body**
   - Monospace font for all text (inputs excepted - default is fine).
   - `lavender` background color.
