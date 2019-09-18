@@ -46,3 +46,7 @@ Your website should be responsive and work on screens of different sizes.
 Your app should end up looking something like this:
 
 ![screen](./screen.png)
+
+## Rubric
+
+![Unit2AssessmentRubric](./Unit2AssessmentRubric.png)
