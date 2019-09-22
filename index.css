@@ -1,0 +1,25 @@
+body{
+  background: lavender;
+  font-family:monospace;
+  /* display:flex ;==> column */
+  align-items: center;
+  text-align: center;
+}
+
+.header{
+  background: skyblue;
+  width: 70%;
+  height: 150px;
+  /* Image and header text should be horizontally oriented. */
+  display: flex;
+  flex-wrap: unset;
+  justify-content: inherit;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+.img{
+  background: skyblue;
+  width: 70%;
+  height: 150px;
+}
