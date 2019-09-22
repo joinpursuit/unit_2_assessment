@@ -1,0 +1,37 @@
+body {
+    font-family: monospace;
+    background-color: lavender;
+
+}
+
+#main-area {
+    margin-left: 18%;
+    margin-right: 18%;
+    text-align: left;
+    padding-top: 50px;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: skyblue;
+    margin-left: 14%;
+    margin-right: 14%;
+}
+
+#header #image img {
+    height: 150px;
+    width: auto;
+    grid-column: 1 / 2;
+    vertical-align: left; 
+}
+
+#header #page-title h1 {
+    grid-column: 2 / -1;
+    text-align: right;
+    vertical-align: text-bottom;
+}
+
+#response {
+    width: 400px;
+}
