@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+    <title>Movie App</title>
+</head>
+
+<body>
+    <div id="head">
+        <img src="Studio_Ghibli_logo.svg.png" alt="Studio Ghibli Logo">
+        <h1>Ghibli Review App</h1>
+    </div>
+
+    <div id="mainArea">
+        <select id="selectBox">
+            <option value=" "> </option>
+        </select>
+
+        <div id="Info">
+            <h3 id="title"></h3>
+            <p id="year"></p>
+            <p id="description"></p>
+        </div>
+
+        <form>
+            <input type="text" name="review" placeholder="Your review here">
+            <input type="submit" value="Submit Review">
+        </form>
+
+        <ul id="reviews">Reviews</ul>
+    </div>
+</body>
+</html>
