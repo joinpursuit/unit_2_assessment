@@ -1,0 +1,27 @@
+body {
+    font-family: monospace;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+img {
+    width: 70%;
+    height: 150px;
+}
+
+#headingContainer {
+    display: flex;
+    width: 80%;
+    background-color: #85cee9;
+}
+
+#headingDiv {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+    left: 450px;
+}
