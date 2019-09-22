@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   getReadyToFetch();
-  whenMovieIsClicked();
-  whenSubmitButtonIsClicked();
+  // whenMovieIsClicked();
+  // whenSubmitButtonIsClicked();
 })
 
 //CLEAR THE SPACE FUNCTION
@@ -36,13 +36,7 @@ function fetchMovieInfo() {
           dropdownBox.appendChild(newOptionLine)
         }
 
-      whenMovieIsClicked(newOptionLine);
-    })
-  }
-
-  const whenMovieIsClicked = () => {
-    form.display = "grid";
-
+  function whenMovieIsClicked() {
     newOptionLine.addEventListener("change", (movies) => {
         for (let j = 0; j < movies.length; j++) {
           let movieYear = movies[i].release_date;
@@ -63,6 +57,9 @@ function fetchMovieInfo() {
         }
     })
   }
+
+})
+}
 
 //This first dropdown line always exists
 let firstDropdownOption = document.getElementById("#firstDropdownOption");
