@@ -32,7 +32,7 @@ const selectButton = (arr) => {
     select.appendChild(newSelect);
     
     }
-    select.addEventListener("click", movieProperties)
+    // select.addEventListener("click", movieProperties)
     
     
 
@@ -52,7 +52,7 @@ function fetchMovie() {
             // movieProperties(data)
         // }
         // console.log(data);
-       
+         movieComment(data)
     })
     // .catch(err => {
     //     console.log("err: " + err)
@@ -65,10 +65,11 @@ const movieProperties = (arr) => {
     let movieYear = document.querySelector("#year")
     let movieDescription = document.querySelector("#description")
 
-        console.log(arr)
-    // for(let i = 0; i <= arr.length -1; i++){
+    console.log(arr)
+    
+    // for(let i = 0; i < arr.length-1; i++){
 
-        movieTitle.innerText = arr.title
+        movieTitle.innerHTML = arr.title
         console.log(movieTitle)
 
         movieYear.innerText = arr.release_date
@@ -82,7 +83,17 @@ const movieProperties = (arr) => {
     container.appendChild(movieDescription)
 // }
             
-    
+
 }
 
 // })
+ 
+const movieComment = (str) => {
+    let input = document.querySelector("#review")
+    let commentList = document.querySelector("#submittedReview")
+if(!input){
+        let list_item = document.createElement("li")
+        commentList.appendChild(list_item)
+        console.log(list_item)
+    }
+}
