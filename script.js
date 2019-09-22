@@ -1,8 +1,8 @@
 const loadMovieInfo = (name) => {
-    if (!name) {
+    if (!name) { //This is runs when selected option is blank
         document.querySelector('#movie_info').innerHTML = `<h3>To begin select a movie</h3>`;
         document.querySelector('form').style.display = 'none';
-        return;
+        return; //Prevents the rest of function from running
     }
     let filmObj = filmsObject[name];
     let title = document.createElement('h3');
@@ -14,14 +14,10 @@ const loadMovieInfo = (name) => {
     year.innerText = filmObj.release_date;
     description.innerText = filmObj.description;
     filmArr = [title, year, description];
-    
     document.querySelector('form').style.display = 'block';
     document.querySelector('#movie_info').innerText = '';
     filmArr.forEach(item => document.querySelector('#movie_info').appendChild(item));
-    
-    return filmArr;
 }
-
 
 const addReview = () => {
     let review = document.createElement('li');
@@ -30,30 +26,19 @@ const addReview = () => {
     document.querySelector('ul').appendChild(review);
 }
 
-
 const createFilmOption = (name) => {
     let option = document.createElement('option');
-
-    option.value = name;
     option.innerText = name;
-    document.querySelector('select').appendChild(option);
+    console.log(option.inn);
     
-    return option;
+    document.querySelector('select').appendChild(option);
 }
 
-
-let filmsObject = {};
+let filmsObject = {}; //Global variable used in loadMovieInfo 
 const fetchMovies = async () => {
     let films = await axios.get(`https://ghibliapi.herokuapp.com/films`);
-    let filmsArr = films.data;
-    let filmsObj = {};
-    
-    filmsArr.forEach(film => filmsObj[film.title] = film);
-    filmsArr.forEach(film => createFilmOption(film.title));
-    filmsObject = filmsObj;
-
-    return filmsObj;
+    films.data.forEach(film => createFilmOption(film.title));
+    films.data.forEach(film => filmsObject[film.title] = film);
 }
-
 
 fetchMovies();

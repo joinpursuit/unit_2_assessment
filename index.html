@@ -14,13 +14,13 @@
         <div id="logo_div">
             <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png" alt="Studio Ghilbi Logo">
         </div>
-        <div id="header_empty_space"></div>
+        <div></div>
         <div id="header_title">
             <h1>Ghilbi Review App</h1>
         </div>
     </div>
     <div id="main_content">
-        <select onchange="loadMovieInfo(this.options[this.selectedIndex].value);"><option></option></select>
+        <select onchange="loadMovieInfo(this.options[this.selectedIndex].innerText);"><option></option></select>
         <div id="movie_info"><h3>To begin select a movie</h3></div>
         <form onsubmit="event.preventDefault();addReview();" style="display: none">
             <input type="text" required>
