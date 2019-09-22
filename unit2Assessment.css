@@ -26,6 +26,10 @@ main {
   grid-row: 2 / 3;
 }
 
+#dropdownBox {
+
+}
+
 #ghibliLogo {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
