@@ -26,10 +26,3 @@ const addUserReviewToList = () => {
   //li's innerText should have the text entered in my input text box
   newReview.innerText = userReviewEntry.innerText;
 }
-
-/*
-so
-
-
-
-*/
