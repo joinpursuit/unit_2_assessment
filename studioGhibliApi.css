@@ -14,12 +14,14 @@ img {
 
 #headingContainer {
     display: flex;
+    flex-direction: row;
+    position: relative;
     width: 80%;
     background-color: #85cee9;
 }
 
 #headingDiv {
-    display: flex;
+    display: grid;
     /* justify-content: center; */
     align-items: center;
     position: relative;
@@ -30,15 +32,10 @@ img {
     width: 60%;
 }
 
-#movieTicket::first-line {
-    font-weight: bold;
-}
-
 #container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     justify-content: center;
 }
 
@@ -50,11 +47,19 @@ img {
 
 ul {
     position: relative;
-    right: 370px;
-    ;
+    right: 300px;
 }
 
 #submit {
     position: relative;
     right: 150px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+select {
+    position: relative;
+    right: 330px;
 }
