@@ -22,6 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
 //____________________
 //
 
+//CLEAR THE SPACE FUNCTION
+const clearMovieDescriptionSpace = () => {
+  //this says inner html is empty when this is called
+  //using variable to hold that we want the specific movie description section
+  const movieDescriptionSpace = document.querySelector("#selectedMovieInfoSection");
+  movieDescriptionSpace.innerHTML = "";
+}
+
+//Following Pokemon example, function to set main space anticipating the fetch
+const getReadyToFetch = () => {
+  clearMovieDescriptionSpace();
+  fetchMovieInfo();
+}
+
 //FETCH FUNCTION IN PROGRESS
 // const fetchMovieInfo = () => {
 //   //remove log later
@@ -38,15 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // }
 //____________________
 
-//CLEAR THE SPACE FUNCTION
-const clearMovieDescriptionSpace = () => {
-  //this says inner html is empty when this is called
-  //using variable to hold that we want the specific movie description section
-  const movieDescriptionSpace = document.querySelector("#selectedMovieInfoSection");
-  movieDescriptionSpace.innerHTML = "";
-}
-
-
 //____________________
 //ABOUT THE EMPTY DIV
 //the div is empty at the start (no html, no text)
@@ -56,6 +61,9 @@ const clearMovieDescriptionSpace = () => {
   //then add the newly selected film's info to the page (CLEAR THE SPACE)
 //____________________
 
+
+//POST FETCH
+//USER ADDS REVIEW BASED ON MOVIE
 const whenSubmitButtonIsClicked = () => {
   //pull our button and say when clicked perform submitting function
   const submitButton = document.querySelector("#submitButton");
