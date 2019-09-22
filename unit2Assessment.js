@@ -38,17 +38,24 @@ const fetchMovieInfo = () => {
     })
 }
 
-
-
 //____________________
 //ABOUT THE SELECT BOX DROPDOWN
-//we are *FETCHING*: movie title, release year, description
 //the movies should be options in our select box dropdown
   //for each movie, add a new option to our select box
-  //ex: <option value="books">Books</option>
+  //ex of option: <option value="books">Books</option>
   //option's inner text? should be the movie's title
   //how do we have the first option in select have a blank inner text?
 //____________________
+
+const addToSelectBox = () => {
+  let dropdownBox = document.querySelector("#dropdownBox");
+  for (let j=0; j < movies.length; j++) {
+    document.createElement("option");
+    option.innerText = movieTitle;
+    dropdownBox.appendChild(option);
+  }
+  whenMovieIsSelected();
+}
 
 //____________________
 //ABOUT THE EMPTY DIV
