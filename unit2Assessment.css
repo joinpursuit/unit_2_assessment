@@ -26,7 +26,7 @@ main {
   grid-row: 2 / 3;
 }
 
-#dropdownBox {
+#firstOption {
 
 }
 
@@ -37,7 +37,7 @@ main {
 }
 
 #pageHeader {
-  float: right;
+  float: right; //this is not responsive and won't stay to right when screen changes
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
