@@ -20,9 +20,9 @@
         </div>
     </div>
     <div id="main_content">
-        <select name="move list" onchange="loadMovieInfo(this.options[this.selectedIndex].value);"></select>
-        <div id="movie_info">To begin select a movie</div>
-        <form onsubmit="event.preventDefault();addReview();">
+        <select onchange="loadMovieInfo(this.options[this.selectedIndex].value);"><option></option></select>
+        <div id="movie_info"><h3>To begin select a movie</h3></div>
+        <form onsubmit="event.preventDefault();addReview();" style="display: none">
             <input type="text" required>
             <button type="submit">Submit Review</button>
         </form>
