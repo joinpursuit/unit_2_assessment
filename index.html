@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unit 2 Movie API</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div id="logo_div">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png" alt="Studio Ghilbi Logo">
+        </div>
+        <div id="header_empty_space"></div>
+        <div id="header_title">
+            <h1>Ghilbi Review App</h1>
+        </div>
+    </div>
+    <div id="main_content">
+        <select name="move list" onchange="loadMovieInfo(this.options[this.selectedIndex].value);"></select>
+        <div id="movie_info">To begin select a movie</div>
+        <form onsubmit="event.preventDefault();addReview();">
+            <input type="text" required>
+            <button type="submit">Submit Review</button>
+        </form>
+        <ul></ul>
+    </div>
+</body>
+</html>
