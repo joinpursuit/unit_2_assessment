@@ -1,0 +1,45 @@
+body {
+    font-family: monospace;
+    background-color: lavender;
+    display: grid;
+    grid-auto-columns: 100%;
+    justify-items: center;
+}
+
+#header {
+    width: 70%;
+    height: 150px;
+    background-color: skyblue;
+    margin-bottom: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#header-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header-title {
+    justify-items: center;
+}
+
+img {
+    height: 150px;
+}
+
+select {
+    margin-bottom: 15px;
+}
+
+#movie-content, #movie-menu {
+    display: flex;
+    justify-items: left;
+    width: 60%;
+}
+
+#review-input {
+    width: 400px;
+}
