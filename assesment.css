@@ -1,0 +1,37 @@
+body{
+    background-color: lavender;
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: center;
+}
+
+.header{
+    width: 70%;
+    height: 150px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: skyblue;
+    background-size: inherit;
+    display: table;
+    
+    
+}
+
+#headerImg{
+    height: inherit;
+    vertical-align: middle;
+    display: table-cell;
+    width: 55%;
+
+}
+
+#headerText{
+    vertical-align: middle;
+    display: table-cell;
+    text-align: justify;
+}
+
+.mainArea{
+    width: 60%;
+    justify-content: left;
+}
