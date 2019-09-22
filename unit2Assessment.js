@@ -27,47 +27,31 @@ function fetchMovieInfo() {
     .then(response => response.json())
     .then(movies => {
 
-      for (let i = 0; i < movies.length; i++) {
 
+      for (let i = 0; i < movies.length; i++) {
       let movieTitle = movies[i].title
 
       let dropdownBox = document.querySelector("#dropdownBox");
       let newOptionLine = document.createElement("option");
           newOptionLine.innerText = movieTitle;
           dropdownBox.appendChild(newOptionLine);
-      }
+
+        }
+
       whenMovieIsClicked();
     })
-  }
-
-
-//____________________
-//ABOUT THE SELECT BOX DROPDOWN
-//the movies should be options in our select box dropdown
-  //for each movie, add a new option to our select box
-  //ex of option: <option value="books">Books</option>
-  //option's inner text? should be the movie's title
-  //how do we have the first option in select have a blank inner text?
-//____________________
+  //where curly brace originally was
 
 //This first dropdown line always exists
 let firstDropdownOption = document.getElementById("#firstDropdownOption");
 firstDropdownOption = " ";
 
 const whenMovieIsClicked = () => {
-  newOptionLine.addEventListener("click", addMovieDescriptionToPage);
+  newOptionLine.addEventListener("change", addMovieDescriptionToPage);
 
   form.display = "block";
 }
-
-//____________________
-//ABOUT THE EMPTY DIV
-//the div is empty at the start (no html, no text)
-//on user selecting a movie, that movie[i]'s info is put into the empty div
-  //adds i guess an h2 for movie title, p tag for year, p tag for description
-//on user selecting another movie, you clear the last film's info first
-  //then add the newly selected film's info to the page (CLEAR THE SPACE)
-//____________________
+}
 
 const addMovieDescriptionToPage = () => {
   for (let j = 0; j < movies.length; j++) {
