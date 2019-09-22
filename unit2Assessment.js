@@ -4,20 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   whenSubmitButtonIsClicked();
 })
 
-//____________________
-//ABOUT THE SELECT BOX DROPDOWN
-//we are *FETCHING*: movie title, release year, description
-//the movies should be options in our select box dropdown
-  //for each movie, add a new option to our select box
-  //ex: <option value="books">Books</option>
-  //option's inner text? should be the movie's title
-  //how do we have the first option in select have a blank inner text?
-//____________________
-
-
-//____________________
-//
-
 //CLEAR THE SPACE FUNCTION
 const clearMovieDescriptionSpace = () => {
   //this says inner html is empty when this is called
@@ -40,16 +26,29 @@ const fetchMovieInfo = () => {
   let url ="https://ghibliapi.herokuapp.com/films";
 
   fetch(url)
-    //just a reminder, this is going to return an object
+    //our Ghibli movies come back as an array of objects
     .then(response => response.json())
     .then(movies => {
-      let movieTitle = movies.title
-      let movieYear = movies.release_date
-      let movieDescription = movies.description
-      //WHAT AM I RETURNING
-      //WHAT DO WE GO TO NEXT
+      for (let i = 0; i < movies.length; i++) {
+      let movieTitle = movies[i].title
+      let movieYear = movies[i].release_date
+      let movieDescription = movies[i].description
+    }
+      addToSelectBox(movies);
     })
 }
+
+
+
+//____________________
+//ABOUT THE SELECT BOX DROPDOWN
+//we are *FETCHING*: movie title, release year, description
+//the movies should be options in our select box dropdown
+  //for each movie, add a new option to our select box
+  //ex: <option value="books">Books</option>
+  //option's inner text? should be the movie's title
+  //how do we have the first option in select have a blank inner text?
+//____________________
 
 //____________________
 //ABOUT THE EMPTY DIV
