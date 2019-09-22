@@ -51,8 +51,8 @@ function fetchMovieInfo() {
 //____________________
 
 //This first dropdown line always exists
-let firstDropdownOption = document.getElementById("#firstOption");
-firstDropdownOption.innerText = "";
+let firstDropdownOption = document.getElementById("#firstDropdownOption");
+firstDropdownOption = " ";
 
 const whenMovieIsClicked = () => {
   newOptionLine.addEventListener("click", addMovieDescriptionToPage);
