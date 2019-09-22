@@ -18,11 +18,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   filmSelect.addEventListener('change', () => {
       populateCurrent(ghibData, filmSelect.value);
   });
-
   document.querySelector('#reviewform').addEventListener('submit', (e) => {
       processReview(e, ghibData);
   })
-
 });
 /* FUNCTIONS on DOMLoaded -- end == */
 
@@ -115,7 +113,6 @@ const addReview = (entryStr, dataArr) => {
   let titleReviewed = document.querySelector('#revtitle').value;
 
   let makingLI = document.createElement('li');
-
   makingLI.innerHTML = `<strong>${titleReviewed} ✔︎</strong> ${entryStr}`;
 
   reviewsList.appendChild(makingLI);

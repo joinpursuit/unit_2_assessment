@@ -18,6 +18,16 @@ body {
   font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
 }
 
+a:link, a:visited {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: salmon;
+  text-decoration: none;
+}
+
 div#base-grid {
   display: grid;
   grid-template-columns: 100vw;
