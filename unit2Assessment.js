@@ -41,7 +41,7 @@ function fetchMovieInfo() {
   }
 
   const whenMovieIsClicked = () => {
-    form.display = "block";
+    form.display = "grid";
 
     newOptionLine.addEventListener("change", (movies) => {
         for (let j = 0; j < movies.length; j++) {
