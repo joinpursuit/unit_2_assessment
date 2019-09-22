@@ -19,7 +19,7 @@ const getApiData = async () => {
 
 const submitReview = (event) => {
     event.preventDefault()
-    opt = getSelectedMovie(select).text
+    opt = getSelectedMovie(select).text.bold()
     let list = document.querySelector('ul')
     let noInput = document.querySelector('#error')
     let textInput = document.querySelector('#textField').value
@@ -29,7 +29,7 @@ const submitReview = (event) => {
         newReview.innerText = ''
     } else {
         noInput.innerText = ''
-        newReview.innerText = ` ${opt}: ${textInput}`
+        newReview.innerHTML = ` ${opt}: ${textInput}`
         list.appendChild(newReview)
     }
     document.querySelector('#textField').value = ''

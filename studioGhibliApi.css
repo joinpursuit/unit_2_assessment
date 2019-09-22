@@ -63,3 +63,9 @@ select {
     position: relative;
     right: 330px;
 }
+
+@media screen and (min-width: 1000px) {
+    body {
+        width: 100%
+    }
+}
