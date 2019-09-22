@@ -38,22 +38,26 @@ const fetchFilmsForSelectBox = () => {
 
 const selectFilm = () => {
     let filmId = document.querySelector("#select-box").value;
-    let url = "https://ghibliapi.herokuapp.com/films/" + filmId;
-    fetch(url)
-        .then(response => response.json())
-        .then(film => {
-            clearFilm()
-            let container = document.querySelector("#micro-container")
-            let title = document.createElement("h3")
-            title.innerText = film.title
-            let date = document.createElement("p")
-            date.innerText = film.release_date
-            let description = document.createElement("p")
-            description.innerText = film.description
-            container.appendChild(title)
-            container.appendChild(date)
-            container.appendChild(description)
-        })
+    if(filmId === "empty") {
+        clearFilm()
+    } else {
+        let url = "https://ghibliapi.herokuapp.com/films/" + filmId;
+        fetch(url)
+            .then(response => response.json())
+            .then(film => {
+                clearFilm()
+                let container = document.querySelector("#micro-container")
+                let title = document.createElement("h3")
+                title.innerText = film.title
+                let date = document.createElement("p")
+                date.innerText = film.release_date
+                let description = document.createElement("p")
+                description.innerText = film.description
+                container.appendChild(title)
+                container.appendChild(date)
+                container.appendChild(description)
+            })
+    }
 }
 
 const clearFilm = () => {
