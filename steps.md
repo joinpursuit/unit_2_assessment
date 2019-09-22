@@ -17,7 +17,7 @@ CSS
     2. "Lavender" background
     3. In a column centered on the page width wise
 ** Header **
-    1. Header should contain (image) and h1) tags
+    1. Header should contain (image) and (h1) tags
     2. Width is 70% and height 150 px
     3. Image and header text should be horizontally oriented
     4. Totoro and title should be on opposite sides of each other with *center* positioning in relation to the height

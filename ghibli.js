@@ -26,19 +26,29 @@ const createOption = (title, id) => {
 }
 const addReview = (event) => {
     event.preventDefault();
+    let selectBox = document.querySelector("#select_box");
+    let errorBox = document.querySelector("#error");
     let reviewList = document.querySelector("ul");
     let inputTextbox = document.querySelector("#review_input");
-    let inputText = inputTextbox.value;
-    let newReviewItem = document.createElement("li");
-        newReviewItem.innerText = inputText;
-        reviewList.appendChild(newReviewItem);
-        inputTextbox.value = " ";
-}
+    let movieName = document.querySelector("#movie_name").innerText
+        if(selectBox.value === "null"){
+            errorBox.innerText = "Please submit a review for a movie";
+            inputTextbox.value = " ";
+        } 
+        else {
+            let inputText = inputTextbox.value;
+            let newReviewItem = document.createElement("li");
+             newReviewItem.innerText = `${movieName}: ${inputText}`;
+             reviewList.appendChild(newReviewItem);
+             inputTextbox.value = " ";
+             errorBox.innerText = " ";
+}}
 const getMovieDetails = async() => {
     let selectBox = document.querySelector("#select_box");
     let movieName = document.querySelector("#movie_name")
     let releaseYear = document.querySelector("#release_year")
     let description = document.querySelector("#description")
+    let errorBox = document.querySelector("#error")
     let id = selectBox.value;
     let url = `https://ghibliapi.herokuapp.com/films/${id}`
     let selectedMovie = await axios.get(url)
@@ -48,4 +58,5 @@ const getMovieDetails = async() => {
         movieName.innerText = selectedMovieName;
         releaseYear.innerText = selectedMovieYear;
         description.innerText =  selectedMovieBlurb;
+        errorBox.innerText = " ";
 } 
