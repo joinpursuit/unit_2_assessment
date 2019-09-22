@@ -1,0 +1,70 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    background-color: lavender;
+    /* height: 100%; */
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 15% 70% 15%;
+    /* grid-template-rows: 40% 50% 10%; */
+}
+
+#header {
+    height: 150px;
+    background-color: paleturquoise;
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+#header img {
+    float: left;
+    text-align: center;
+    height: 150px;
+}
+
+#header h1 {
+    position: relative;
+    text-align: right;
+    margin: 0;
+    top: 55px;
+}
+
+.container2 {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 1fr;
+    justify-content: left;
+
+}
+
+#body {
+    /* background-color: gray; */
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    line-height: 30px;
+    /* padding: 6px 16px; */
+    /* align-items: center; */
+}
+
+#body #movie-info {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#body form {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    width: 400px;
+}
+
+#body ul {
+    grid-column: 1 / 2;
+    grid-row: 3 / -1;
+}

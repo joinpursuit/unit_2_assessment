@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="Movie_App.js"></script>
+    <link rel="stylesheet" href="Movie_App.css">
+    <title>Ghibli Reviews</title>
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png"></img>
+            <h1>Ghibli Review App</h1>
+        </div>
+
+    </div>
+    <div class="container2">
+        
+        <div id="body">
+            <select id="select-movie">
+                <option>Select a Movie</option>
+            </select>
+
+            <div id="movie-info">
+                    <!-- will contain title in h3 and release year in p and description in p -->
+                    <h3 id="movie-title"></h3>
+                    <p id="release-date"></p>
+                    <p id="description"></p>
+            </div>
+                <form id="form">
+                    <input type='text' style="width: 400px;" id="review" placeholder="Enter Review">
+                    <!-- Submit Add's to the frontend a mini review -->
+                    <input type='submit' id="save-review" value="Submit Review">
+                </form>
+                <ul id='submited-reviews'>
+                    <!-- This is where the reviews will go from that submit above -->
+                </ul>
+            </div>
+    
+        </div>
+</body>
+</html>
