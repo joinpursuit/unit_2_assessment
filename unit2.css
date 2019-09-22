@@ -1,0 +1,35 @@
+
+#header{
+    /* display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%; */
+   
+}
+
+body{
+    background-color: lavender;
+}
+
+#logo{
+    display: flex;
+    height: 30vh;
+    width: 100%;
+    background-color: rgb(99, 144, 172);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#containerForSelectBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+}
+
+#footer{
+    justify-content: center; 
+    align-items:center;
+    margin-top: 40px;
+}

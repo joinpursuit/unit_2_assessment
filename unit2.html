@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ghibli Review App</title>
+    <link rel="stylesheet" href="./unit2.css">
+</head>
+
+<body>
+    <div id="header">
+        <img id="logo"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png"
+            alt="Studio Ghibli Logo">;
+    </div>
+
+    <div id = "containerForSelectBox">
+    <form>
+        <select id="mySelect">
+        </select>
+        <br><br>
+        <input type="button" onclick="getOption()" value="Click Me!">
+    </form>
+
+    <p id="demo"></p>
+</div>
+
+<div id= "footer">
+        <form id= "reviews" action: onsubmit="showMessage()"  onsubmit="showMessage()" >
+                <input id="review" type="text" size="20">
+                <input type="submit">
+
+</div>
+
+
+
+
+
+    <script src="./unit2.js"></script>
+</body>
+
+</html>
