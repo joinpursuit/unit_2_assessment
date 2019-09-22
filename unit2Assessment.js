@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const clearMovieDescriptionSpace = () => {
 
   const movieDescriptionSpace = document.querySelector("#selectedMovieInfoSection");
-  movieDescriptionSpace.innerHTML = "";
+  // movieDescriptionSpace.innerHTML = "";
 }
 
 
@@ -36,25 +36,29 @@ function fetchMovieInfo() {
           dropdownBox.appendChild(newOptionLine)
         }
 
-  function whenMovieIsClicked() {
-    newOptionLine.addEventListener("change", (movies) => {
-        for (let j = 0; j < movies.length; j++) {
-          let movieYear = movies[i].release_date;
-          let movieDescription = movies[i].description;
+  whenMovieIsClicked();
 
-          let currentTitle = document.createElement("h2");
+  function whenMovieIsClicked() {
+    document.addEventListener("change", (newOptionLine) => {
+        for (let j = 0; j < movies.length; j++) {
+          let movieYear = movies[j].release_date;
+          let movieDescription = movies[j].description;
+          let anotherMovieTitle = movies[j].title;
+
+          let currentMovieTitle = document.createElement("h2");
           let currentReleaseDate = document.createElement("p");
           let currentDescription = document.createElement("p");
 
-          currentTitle.innerText = movieTitle;
+          currentMovieTitle.innerText = anotherMovieTitle;
           currentReleaseDate.innerText = movieYear;
           currentDescription.innerText = movieDescription;
 
-          let movieArea = document.getElementById("#selectedMovieInfoSection");
-          movieArea.appendChild(currentTitle);
-          movieArea.appendChild(currentReleaseDate);
-          movieArea.appendChild(currentDescription);
+          let movieArea = document.getElementById("#selectedMovieSection");
+          document.movieArea.appendChild("currentMovieTitle");
+          document.movieArea.appendChild("currentReleaseDate");
+          document.movieArea.appendChild("currentDescription");
         }
+        whenSubmitButtonIsClicked();
     })
   }
 
@@ -87,3 +91,6 @@ const addUserReviewToList = () => {
   //li's innerText should have the text entered in my input text box
   newReview.innerText = userReviewEntry.innerText;
 }
+
+// })
+// }
