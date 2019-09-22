@@ -9,13 +9,14 @@ const setupBtnListeners = () => {
 }
 
 const postReview = () => {
-    let emptyReview = document.createElement("li")
+    let newReviewListItem = document.createElement("li")
     let filmName = document.querySelector("h3").innerHTML
+    newReviewListItem.id = filmName
     let list = document.querySelector("#listy-mclistface")
     let review = document.querySelector("#text-box").value
-    let fullReview = filmName.toUpperCase() + ": " + review
-    emptyReview.append(fullReview)
-    list.append(emptyReview)
+    let fullReview = ": " + review
+    newReviewListItem.append(fullReview)
+    list.append(newReviewListItem)
     clearInput()
 }
 
