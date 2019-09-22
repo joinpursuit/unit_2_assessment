@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   getReadyToFetch();
-  whenMovieIsSelected();
+  whenMovieIsClicked();
   whenSubmitButtonIsClicked();
 })
 
@@ -18,25 +18,28 @@ const getReadyToFetch = () => {
   fetchMovieInfo();
 }
 
-//FETCH FUNCTION IN PROGRESS
-const fetchMovieInfo = () => {
-  //remove log later
-  console.log("just testing out that this appears in some fashion");
-
+//FETCH
+function fetchMovieInfo() {
   let url ="https://ghibliapi.herokuapp.com/films";
 
   fetch(url)
     //our Ghibli movies come back as an array of objects
     .then(response => response.json())
     .then(movies => {
+
       for (let i = 0; i < movies.length; i++) {
+
       let movieTitle = movies[i].title
-      let movieYear = movies[i].release_date
-      let movieDescription = movies[i].description
+
+      let dropdownBox = document.querySelector("#dropdownBox");
+      let newOptionLine = document.createElement("option");
+          newOptionLine.innerText = movieTitle;
+          dropdownBox.appendChild(newOptionLine);
+      }
+      whenMovieIsClicked();
     }
-      addToSelectBox(movies);
-    })
-}
+  }
+
 
 //____________________
 //ABOUT THE SELECT BOX DROPDOWN
@@ -47,21 +50,12 @@ const fetchMovieInfo = () => {
   //how do we have the first option in select have a blank inner text?
 //____________________
 
-const addToSelectBox = (movies) => {
-  let firstDropdownOption = document.getElementById("#firstOption");
-  firstDropdownOption.innerText = "";
+//This first dropdown line always exists
+let firstDropdownOption = document.getElementById("#firstOption");
+firstDropdownOption.innerText = "";
 
-  let dropdownBox = document.querySelector("#dropdownBox");
-  for (let j=0; j < movies.length; j++) {
-    document.createElement("option");
-    option.innerText = movieTitle;
-    dropdownBox.appendChild(option);
-  }
-  whenMovieIsSelected();
-}
-
-const whenMovieIsSelected = () => {
-
+const whenMovieIsClicked = () => {
+  newOptionLine.addEventListener("click", addMovieDescriptionToPage);
 }
 
 //____________________
@@ -73,6 +67,25 @@ const whenMovieIsSelected = () => {
   //then add the newly selected film's info to the page (CLEAR THE SPACE)
 //____________________
 
+const addMovieDescriptionToPage = () => {
+  for (let j = 0; j < movies.length; j++) {
+    let movieYear = movies[i].release_date;
+    let movieDescription = movies[i].description;
+
+    let currentTitle = document.createElement("h2");
+    let currentReleaseDate = document.createElement("p");
+    let currentDescription = document.createElement("p");
+
+    currentTitle.innerText = movieTitle;
+    currentReleaseDate.innerText = movieYear;
+    currentDescription.innerText = movieDescription;
+
+    let movieArea = document.getElementById("#selectedMovieInfoSection");
+    movieArea.appendChild(currentTitle);
+    movieArea.appendChild(currentReleaseDate);
+    movieArea.appendChild(currentDescription);
+  }
+}
 
 //BEYOND POST FETCH
 //USER ADDS REVIEW BASED ON MOVIE
