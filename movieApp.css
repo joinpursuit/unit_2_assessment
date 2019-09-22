@@ -1,0 +1,42 @@
+body{
+    background-color: lavender;
+    font-family: monospace;
+}
+
+#header{
+    background-color: skyblue;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%; 
+    height: 150px;
+    margin-bottom: 30px;
+    padding:10px;
+    text-align: center;
+
+}
+
+#banner{
+    height:150px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#page-title{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+
+#review{
+    width: 400px;
+}
+
+#main-area{
+    width: 60%;
+    grid-template-columns: 1fr;
+    justify-content: left;
+}
+
+select{
+    margin-bottom: 20px;
+}
