@@ -47,7 +47,10 @@ const fetchMovieInfo = () => {
   //how do we have the first option in select have a blank inner text?
 //____________________
 
-const addToSelectBox = () => {
+const addToSelectBox = (movies) => {
+  let firstDropdownOption = document.getElementById("#firstOption");
+  firstDropdownOption.innerText = "";
+
   let dropdownBox = document.querySelector("#dropdownBox");
   for (let j=0; j < movies.length; j++) {
     document.createElement("option");
@@ -55,6 +58,10 @@ const addToSelectBox = () => {
     dropdownBox.appendChild(option);
   }
   whenMovieIsSelected();
+}
+
+const whenMovieIsSelected = () => {
+
 }
 
 //____________________
@@ -67,7 +74,7 @@ const addToSelectBox = () => {
 //____________________
 
 
-//POST FETCH
+//BEYOND POST FETCH
 //USER ADDS REVIEW BASED ON MOVIE
 const whenSubmitButtonIsClicked = () => {
   //pull our button and say when clicked perform submitting function
