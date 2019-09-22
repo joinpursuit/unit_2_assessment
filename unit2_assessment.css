@@ -1,0 +1,48 @@
+body {
+    display: grid;
+    background-color: lavender;
+    margin: auto;
+
+}
+
+img,
+#mainHeader {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 70%;
+    Height: 150px;
+    position: bottom right;
+
+}
+
+
+#mainHeader {
+    display: grid;
+    font-weight: bold;
+    Height: 150px;
+    background-color: skyblue;
+    grid-area: header;
+
+}
+
+#mainHeader h1 {
+    margin: 30px;
+    padding: 10px;
+    font-size: 20px;
+    position: left;
+
+}
+
+#mySelect {
+    width: 150px;
+}
+
+/* img #mainHeader,
+#mainHeader h1 {
+
+    ;
+} */
+
+#selectMovieBox {
+    display: flex;
+    flex-direction: row;
