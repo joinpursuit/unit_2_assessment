@@ -15,8 +15,18 @@ header {
   width: 70%;
 }
 
+main {
+  //content in column
+  justify-content: left;
+  width: 60%;
+}
+
 #ghibliLogo {
   //does this inherit the header section's 150px height or do you need to
     //name it directly?
   height: inherit;
+}
+
+#userReview {
+  width: 400px;
 }
