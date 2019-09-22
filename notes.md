@@ -57,7 +57,7 @@ MAKING A MOVIE APP
         1. A list of all films in their API. [https://ghibliapi.herokuapp.com/films]
             1. a way to add all the titles to a select box
                 1. Could be done manually, but I bet there’s a way to do this automatically
-        2. A single film [https://ghibliapi.herokuapp.com/{{filmID}}]
+        2. A single film [https://ghibliapi.herokuapp.com/films/{{filmID}}]
             1. Title  Film.title
             2. Release year  Film.release_date
             3. Description  Film.description
