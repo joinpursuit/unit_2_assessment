@@ -1,21 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // console.log("just checking on things so far");
-  //does this submit button function actually go here? check back after fetch
+  getReadyToFetch();
+  whenMovieIsSelected();
   whenSubmitButtonIsClicked();
-  //on load, the fetch should have provided movie info for the select box dropdown
-
-  //on dropdown selection, fetch provides info for items you are adding to main
 })
 
 //____________________
 //ABOUT THE SELECT BOX DROPDOWN
 //we are *FETCHING*: movie title, release year, description
-  /*OK so we can fetch by movies or by ID
-  if we do by id then
-    */
 //the movies should be options in our select box dropdown
-//the movies array for the select box should be: [""], movie1, movie2, etc] with the default
-  //selection blank
+  //for each movie, add a new option to our select box
+  //ex: <option value="books">Books</option>
+  //option's inner text? should be the movie's title
+  //how do we have the first option in select have a blank inner text?
 //____________________
 
 
@@ -37,20 +33,23 @@ const getReadyToFetch = () => {
 }
 
 //FETCH FUNCTION IN PROGRESS
-// const fetchMovieInfo = () => {
-//   //remove log later
-//   console.log("just testing out that this appears in some fashion");
-//
-//   let url ="https://ghibliapi.herokuapp.com/films";
-//
-//   fetch(url)
-//     //just a reminder, this is going to return an object
-//     .then(response => response.json())
-//     .then(movies => {
-//
-//     })
-// }
-//____________________
+const fetchMovieInfo = () => {
+  //remove log later
+  console.log("just testing out that this appears in some fashion");
+
+  let url ="https://ghibliapi.herokuapp.com/films";
+
+  fetch(url)
+    //just a reminder, this is going to return an object
+    .then(response => response.json())
+    .then(movies => {
+      let movieTitle = movies.title
+      let movieYear = movies.release_date
+      let movieDescription = movies.description
+      //WHAT AM I RETURNING
+      //WHAT DO WE GO TO NEXT
+    })
+}
 
 //____________________
 //ABOUT THE EMPTY DIV
