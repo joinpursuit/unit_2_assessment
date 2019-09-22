@@ -37,7 +37,7 @@ function fetchMovieInfo() {
           dropdownBox.appendChild(newOptionLine);
       }
       whenMovieIsClicked();
-    }
+    })
   }
 
 
@@ -56,6 +56,8 @@ firstDropdownOption.innerText = "";
 
 const whenMovieIsClicked = () => {
   newOptionLine.addEventListener("click", addMovieDescriptionToPage);
+
+  form.display = "block";
 }
 
 //____________________
