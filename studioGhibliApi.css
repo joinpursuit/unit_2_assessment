@@ -25,3 +25,36 @@ img {
     position: relative;
     left: 450px;
 }
+
+#movieTicket {
+    width: 60%;
+}
+
+#movieTicket::first-line {
+    font-weight: bold;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: center;
+}
+
+#textField {
+    width: 400px;
+    position: relative;
+    right: 157.9px;
+}
+
+ul {
+    position: relative;
+    right: 370px;
+    ;
+}
+
+#submit {
+    position: relative;
+    right: 150px;
+}

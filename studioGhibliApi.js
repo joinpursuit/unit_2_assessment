@@ -1,4 +1,3 @@
-let select
 let container
 let movieArray = []
 let opt;
@@ -8,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('hello');
     getMovieTitle()
     let form = document.querySelector('form')
-    form.addEventListener('submit', (event)=>{
+    form.addEventListener('submit', (event) => {
         submitReview(event);
     })
 })
@@ -21,23 +20,23 @@ const getApiData = async () => {
     return movies.data
 }
 
-const submitReview = (event) =>{
+const submitReview = (event) => {
 
     event.preventDefault()
     // replaceSelection();
-let list = document.querySelector('ul')
-let noInput = document.querySelector('p')
-let textInput = document.querySelector('#textField').value
-let newReview = document.createElement('li')
-if(textInput === ''){
-    noInput.innerText =`Please enter a valid review`
-    newReview.innerText=''
-} else{
-    noInput.innerText =''
-    newReview.innerText = `${textInput}`;
-    list.appendChild(newReview)
+    let list = document.querySelector('ul')
+    let noInput = document.querySelector('#error')
+    let textInput = document.querySelector('#textField').value
+    let newReview = document.createElement('li')
+    if (textInput === '') {
+        noInput.innerText = `Please enter a valid review`
+        newReview.innerText = ''
+    } else {
+        noInput.innerText = ''
+        newReview.innerText = `${textInput}`;
+        list.appendChild(newReview)
     }
-    document.querySelector('#textField').value =''
+    document.querySelector('#textField').value = ''
 }
 
 const pullFromHtml = async () => {
@@ -69,7 +68,7 @@ const getSelectedMovie = (select) => {
 const getMovieInfo = async (param) => {
     select = await pullFromHtml();
     select.addEventListener('change', () => {
-replaceSelection()
+        replaceSelection()
         let opt = getSelectedMovie(select);
         console.log(opt);
         for (let i = 0; i < param.length; i++) {
@@ -102,7 +101,8 @@ const creatingCard = async (ghibliArray) => {
     container = getContainer();
 
     const movieContainer = document.createElement('div')
-    let movie = document.createElement('p')
+    movieContainer.id = 'movieTicket'
+    let movie = document.createElement('h3')
     let year = document.createElement('p')
     let blurb = document.createElement('p')
 
