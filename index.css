@@ -1,0 +1,55 @@
+body {
+	background-color: lavender;
+}
+
+header{
+	background-color: skyblue;
+	width: 70%;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: auto;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+#header-img{
+	height: 100%;
+	width: 45%;
+}
+
+.main-body {
+	width: 60%;
+	margin: auto;
+}
+
+.movie-review {
+	display: flex;
+	align-items: center;
+}
+
+.movie-titles{
+	margin-bottom: 50px;
+}
+
+#review{
+	width: 400px;
+}
+
+@media only screen and (max-width: 700px) {
+	header{
+		flex-direction: column;
+		height: 100%;
+	}
+	#review {
+		width: 250px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	#review {
+		width: 175px;
+	}
+
+}
