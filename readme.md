@@ -50,3 +50,34 @@ Your app should end up looking something like this:
 ## Rubric
 
 ![Unit2AssessmentRubric](./Unit2AssessmentRubric.png)
+
+HTML
+1. Image of studio Ghibli logo
+2. Header (h1) that says "Ghibli Review App"
+3. (Select) box that contains the titles of each movie availible in the API as well as a default blank section
+4. An empty (div) that will hold an (h3) title tag, release year (p) and description (p)
+    * When users -select- an option, the div will be populated/ replaced with information 
+5. A (form) that includes a (text) input and a (submit) input that allows users not only to submit their review to the page
+    6. A (ul) under the form that will list (li) all reviews submitted by users
+    7. Film title in bold and review not bold.
+
+CSS
+** Body **
+    1. Monospace font
+    2. "Lavender" background
+    3. In a column centered on the page width wise
+** Header **
+    1. Header should contain (image) and h1) tags
+    2. Width is 70% and height 150 px
+    3. Image and header text should be horizontally oriented
+    4. Totoro and title should be on opposite sides of each other with *center* positioning in relation to the height
+    5. Totoro image should be the same height as the header (150px)
+    6. Header should have 30px margin on the bottom and padding of 10px on all sides
+    7. Header background should be (skyblue)
+** Main Area **
+    1. Contains all other content (select/ description div/ form/ reviews)
+    2. Width should be 60%
+    3. Content should be in a (column) with a (left orientation)
+** Review Text Input ** 
+    1. Text(input) should have an explicit width of 400 px
+    

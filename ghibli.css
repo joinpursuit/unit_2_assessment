@@ -1,0 +1,40 @@
+body {
+    background-color: lavender;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 70%;
+    background-color: skyblue;
+    margin: 30px auto;
+    padding-bottom: 10px;
+    grid-column: 2 /4;
+}
+#ghibli_logo {
+    height: 150px;
+    width: 40%;
+    justify-content: flex-start;
+}
+#header_text{
+    font-family: "Lucida Console", Monaco, monospace;
+    margin: auto 25px auto auto;
+    justify-content: flex-end;
+    font-size: 20px;
+}
+.main {
+    font-family: "Courier New", Courier, monospace;
+    width: 60%;
+    margin: auto;
+    padding-bottom: 10px;
+    grid-column: 2 /4;
+    grid-row: 2 /3;
+}
+
+#error {
+    color: red;
+    font-style: italic;
+}
