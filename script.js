@@ -10,7 +10,6 @@ const loadMovieInfo = (name) => {
     let description = document.createElement('p');
     let filmArr = [title, year, description];
     
-    
     title.innerText = filmObj.title;
     year.innerText = filmObj.release_date;
     description.innerText = filmObj.description;
