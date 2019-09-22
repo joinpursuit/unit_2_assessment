@@ -1,0 +1,45 @@
+body {
+  font-family: monospace;
+  display: flex;
+  flex-flow: column;
+  position: center;
+  text-align: left;
+  align-items: center;
+  width: 100%;
+  background-color: lavender;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 150px;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: skyblue;
+}
+
+#logo {
+  height: 150px;
+}
+
+h1 {
+  text-align: right;
+}
+
+.main {
+  display: block;
+  justify-content: left;
+  width: 60%;
+}
+
+#textbox {
+  width: 400px;
+  margin-top: 30px;
+}
