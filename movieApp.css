@@ -1,6 +1,14 @@
+@media only screen and (max-width: 600px) {
+    body {
+        width:100%;
+      
+    }
+  }
+
 body{
     background-color: lavender;
     font-family: monospace;
+    margin-left: 22%;
 }
 
 #header{

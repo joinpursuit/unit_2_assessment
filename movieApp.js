@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded",  async ()=>{
-    await loadFilmTitles()
+    await loadFilmTitles();
     // await getFilmInfo()
+    await userReview();
 })
 
 const filmsAPI = 'https://ghibliapi.herokuapp.com/films';
@@ -31,18 +32,41 @@ dropdown.selectedIndex = 0;
                 //creating the drop down list options 
                 option = document.createElement('option');
                 option.text = films[i].title;
-                option.value = "";
+                option.value = ' ';
+                // displayFilmInfo(film);
                 dropdown.add(option)
                 // console.log(option)
                 film = films[i]
-                // console.log(film)
-                if(!option.value === film.value){
-                    // displayFilmInfo(film);
-                   console.log(film);
-                   displayFilmInfo(film)
-               }
+                console.log(film)
+                // if(!dropdown.selectedIndex === 0){
+                //     console.log(dropdown.selecetedIndex) 
+                //  }
             }
-               
+          
+                
+
+
+                defaultOption.onchange = displayFilmInfo(option);
+                // console.log(option)
+
+            // document.addEventListener('input' , function(event){
+            //     if(event.target.selectedIndex !== defaultOption){
+            //         return 
+            //     }
+
+            // })
+
+            // option.addEventListener('change', event=>{
+            //     if(!option[0] === defaultOption){
+            //         console.log()
+            //         option.value = displayFilmInfo(film)
+            //     }
+            // })
+                // if(film === true){
+                //     //  return displayFilmInfo(film);
+                //     // console.log(film);
+                //     displayFilmInfo(film)
+                // }
             
               
         
@@ -51,27 +75,26 @@ dropdown.selectedIndex = 0;
         })
 }
 
-const getFilmInfo = async () =>{
+// const getFilmInfo = async () =>{
 
-    await axios
-    .get(filmsAPI)
-    .then((response=>{
-        console.log(response)
-        let movies = response.data;
-        console.log(movies)
-        for(let i = 0; i < movies.length; i++){
-            // let description = movies[i].description;
-            // let year = movies[i].release_date
-            // let title = movies[i].title
-            if(movies[i])
-        }
-    })).catch((err)=>{
-        console.log('Something is wrong');
-    })
-    
-}
+//     await axios
+//     .get(filmsAPI)
+//     .then((response=>{
+//         console.log(response)
+//         let movies = response.data;
+//         console.log(movies)
+//         for(let i = 0; i < movies.length; i++){
+//             // let description = movies[i].description;
+//             // let year = movies[i].release_date
+//             // let title = movies[i].title
+//             if(movies[i])
+//         }
+//     })).catch((err)=>{
+//         console.log('Something is wrong');
+//     })  
+// }
 
-const displayFilmInfo =  (film) =>{
+const displayFilmInfo = async (film) =>{
     //create another div to put all the content of the movie & give it the ID of the movie name
     const filmInfo = document.createElement('div');
     filmInfo.id = film.title;
@@ -101,23 +124,46 @@ const displayFilmInfo =  (film) =>{
 
 
 
-// const userReview = () =>{
-//     // clearInfo();
-//     let submitBtn = document.querySelector('#submit-review')
-//     submitBtn.addEventListener('click', () => {
-//         event.preventDefault();
+const userReview = async () =>{
+    // await clearInfo();
+    let submitBtn = document.querySelector('#submit-review')
+    submitBtn.addEventListener('click', () => {
+        event.preventDefault();
 
-//     })
-// }
+    })
+
+    const inputBox = document.querySelector('#review');
+
+    //create div to hold reviews
+    const reviewHolder = document.querySelector('#feedback')
+    //Unordered list for review
+    const reviewList = document.createElement('ul');
+
+    
+    //list item per reviews
+    // const submission = document.createElement('li')
+
+    // if(!inputBox.value){
+
+    //     submission.innerText = inputBox.value;
+
+    // }
+    
+
+    reviewHolder.appendChild(reviewList);
+    reviewList.appendChild(submission);
+}
 
 // const showInput = () => {
 
-//     let inputBox = form.querySelector('#review');
-//     console.log(inputBox)
+    
+
+   
+
 // }
 
 
-//function to clear the div with film data
+// function to clear the div with film data
 // const clearInfo = async (div) =>{
 //     let data = document.querySelector('div')
 //     data.innerHTML = ' ';
