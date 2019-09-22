@@ -1,0 +1,42 @@
+body{
+   background-color: lavender
+}
+
+#divGod {
+   background-color: skyblue;
+   position: absolute;
+   top: 0%;
+   bottom: 75%;
+   left: 15%;
+   right:15%;
+
+}
+
+#headerGod{
+   position: absolute;
+   left:70%
+}
+
+#logo{
+   position: absolute;
+   top:0%;
+   bottom: 75%;
+   height: 200px;
+   width: 300px
+}
+
+#lemmeWatch{
+   position: absolute;
+   bottom: 73%
+}
+
+#fo{
+   position: absolute;
+   bottom: 40%
+}
+#ugh{
+   position: absolute;
+   bottom: 50%;
+   border: 5px;
+   border-color: black;
+}
