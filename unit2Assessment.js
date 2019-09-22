@@ -2,28 +2,48 @@ document.addEventListener("DOMContentLoaded", () => {
   // console.log("just checking on things so far");
   //does this submit button function actually go here? check back after fetch
   whenSubmitButtonIsClicked();
-  //what else goes here?
+  //on load, the fetch should have provided movie info for the select box dropdown
+
+  //on dropdown selection, fetch provides info for items you are adding to main
 })
 
 //____________________
 //ABOUT THE SELECT BOX DROPDOWN
 //we are *FETCHING*: movie title, release year, description
+  /*OK so we can fetch by movies or by ID
+  if we do by id then
+    */
 //the movies should be options in our select box dropdown
 //the movies array for the select box should be: [""], movie1, movie2, etc] with the default
   //selection blank
 //____________________
 
-const fetchMovieInfo = () => {
-  //remove log later
-  console.log("just testing out that this appears in some fashion");
 
-  let url ="https://ghibliapi.herokuapp.com/films";
+//____________________
+//
 
-  fetch(url)
-    .then(response => response.json())
-    .then(movies => {
+//FETCH FUNCTION IN PROGRESS
+// const fetchMovieInfo = () => {
+//   //remove log later
+//   console.log("just testing out that this appears in some fashion");
+//
+//   let url ="https://ghibliapi.herokuapp.com/films";
+//
+//   fetch(url)
+//     //just a reminder, this is going to return an object
+//     .then(response => response.json())
+//     .then(movies => {
+//
+//     })
+// }
+//____________________
 
-    })
+//CLEAR THE SPACE FUNCTION
+const clearMovieDescriptionSpace = () => {
+  //this says inner html is empty when this is called
+  //using variable to hold that we want the specific movie description section
+  const movieDescriptionSpace = document.querySelector("#selectedMovieInfoSection");
+  movieDescriptionSpace.innerHTML = "";
 }
 
 
