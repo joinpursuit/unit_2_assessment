@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie App</title>
+    <script src="unit2.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="unit2.css">
+</head>
+<body>
+    <div id="header">
+        <div id="header-content">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png" alt="Ghibli_logo">
+            <h1 id="header-title">Ghibli Review App</h1>
+        </div>
+    </div>
+    <div id="movie-menu">
+        <select id="movie-titles"></select>
+    </div>
+    <div id="movie-content">
+
+        <form id="film-review">
+            <input type="text" id="review-input"/>
+            <input type="submit" value="Submit Review" onclick="movieReviewList()"/>
+        </form>
+        <ul id='movie-review-lists'></ul>
+    </div>
+</body>
+</html>
