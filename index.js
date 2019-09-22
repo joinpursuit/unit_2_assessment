@@ -2,7 +2,6 @@ let middleDiv = document.querySelector("#middleDiv");
 let selectList = document.querySelector("#selectList");
 let allMoviesData;
 
-
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
     fetchMovies();
@@ -19,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.appendChild(ul);
     })
 
-    
-const fetchMovies = () => { //this code is for the MVP
+const fetchMovies = () => {
     console.log("fetchMovies started");
     fetch("https://ghibliapi.herokuapp.com/films")
         .then(response => {
@@ -31,7 +29,6 @@ const fetchMovies = () => { //this code is for the MVP
             console.log("dataObj: ", dataObj);
             allMoviesData = dataObj;
             renderMovies(dataObj);
-            // resultsFromOption();
         })
         .catch(err => {
             console.log("err: ", err);
@@ -68,12 +65,6 @@ const resultsFromOption = (movies) => {
 }
 
 const addReview = () => {
-    // let input = document.getElementById("userInput").value;
-    // let listItem = document.createElement("li");
-    // listItem.innerText = input;
-    // let ul = document.querySelector("ul");
-    // ul.appendChild(listItem);
-
     let movieTitle = document.getElementById("selectList").value;
     for(let i = 0; i < 20; i++) {
         if(allMoviesData[i].title === movieTitle) {
