@@ -1,0 +1,17 @@
+body {
+    background-color: lavender;
+    text-align: center;
+    background-image:
+}
+
+#header {
+    background-color: skyblue;
+    height: 200px;
+    /* background-image: url(https://i.pinimg.com/originals/03/51/71/0351711fe834c3a96656f65b4c54b2b2.jpg);     */
+}
+
+#mainDiv {
+    display: grid;
+    justify-content: left;
+    margin: 30px;
+}
