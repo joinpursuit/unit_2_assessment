@@ -6,13 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //CLEAR THE SPACE FUNCTION
 const clearMovieDescriptionSpace = () => {
-  //this says inner html is empty when this is called
-  //using variable to hold that we want the specific movie description section
+
   const movieDescriptionSpace = document.querySelector("#selectedMovieInfoSection");
   movieDescriptionSpace.innerHTML = "";
 }
 
-//Following Pokemon example, function to set main space anticipating the fetch
+
 const getReadyToFetch = () => {
   clearMovieDescriptionSpace();
   fetchMovieInfo();
@@ -21,6 +20,7 @@ const getReadyToFetch = () => {
 //FETCH
 function fetchMovieInfo() {
   let url ="https://ghibliapi.herokuapp.com/films";
+  let dropdownBox = document.querySelector("#dropdownBox");
 
   fetch(url)
     //our Ghibli movies come back as an array of objects
@@ -31,47 +31,42 @@ function fetchMovieInfo() {
       for (let i = 0; i < movies.length; i++) {
       let movieTitle = movies[i].title
 
-      let dropdownBox = document.querySelector("#dropdownBox");
-      let newOptionLine = document.createElement("option");
-          newOptionLine.innerText = movieTitle;
-          dropdownBox.appendChild(newOptionLine);
-
+      let newOptionLine = document.createElement("option")
+          newOptionLine.innerText = movieTitle
+          dropdownBox.appendChild(newOptionLine)
         }
 
-      whenMovieIsClicked();
+      whenMovieIsClicked(newOptionLine);
     })
-  //where curly brace originally was
+  }
+
+  const whenMovieIsClicked = () => {
+    form.display = "block";
+
+    newOptionLine.addEventListener("change", (movies) => {
+        for (let j = 0; j < movies.length; j++) {
+          let movieYear = movies[i].release_date;
+          let movieDescription = movies[i].description;
+
+          let currentTitle = document.createElement("h2");
+          let currentReleaseDate = document.createElement("p");
+          let currentDescription = document.createElement("p");
+
+          currentTitle.innerText = movieTitle;
+          currentReleaseDate.innerText = movieYear;
+          currentDescription.innerText = movieDescription;
+
+          let movieArea = document.getElementById("#selectedMovieInfoSection");
+          movieArea.appendChild(currentTitle);
+          movieArea.appendChild(currentReleaseDate);
+          movieArea.appendChild(currentDescription);
+        }
+    })
+  }
 
 //This first dropdown line always exists
 let firstDropdownOption = document.getElementById("#firstDropdownOption");
 firstDropdownOption = " ";
-
-const whenMovieIsClicked = () => {
-  newOptionLine.addEventListener("change", addMovieDescriptionToPage);
-
-  form.display = "block";
-}
-}
-
-const addMovieDescriptionToPage = () => {
-  for (let j = 0; j < movies.length; j++) {
-    let movieYear = movies[i].release_date;
-    let movieDescription = movies[i].description;
-
-    let currentTitle = document.createElement("h2");
-    let currentReleaseDate = document.createElement("p");
-    let currentDescription = document.createElement("p");
-
-    currentTitle.innerText = movieTitle;
-    currentReleaseDate.innerText = movieYear;
-    currentDescription.innerText = movieDescription;
-
-    let movieArea = document.getElementById("#selectedMovieInfoSection");
-    movieArea.appendChild(currentTitle);
-    movieArea.appendChild(currentReleaseDate);
-    movieArea.appendChild(currentDescription);
-  }
-}
 
 //BEYOND POST FETCH
 //USER ADDS REVIEW BASED ON MOVIE
