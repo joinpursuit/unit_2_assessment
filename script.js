@@ -2,10 +2,13 @@ let movieData;
 
 let options = [];
 
+let reviewsData = {};
+
 document.addEventListener('DOMContentLoaded', async () => {
     await getAllMovieTitle();
     await makeMovieOptions(movieData);
     console.log(movieData);
+    console.log(reviewsData);
 
     document.querySelector('#movie-select').onchange = () => {
         const currentOption = document.querySelector('#movie-select').value;
@@ -14,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const movie = selectedMovieData(movieData, currentOption);
         console.log(movie)
         displaySelectedMovie(movie);
+        loadReviews(currentOption);
     }
 
     document.querySelector('input[type="submit"]').addEventListener('click', event => {
@@ -38,7 +42,7 @@ const makeMovieOptions = (moviesArr) => {
         option.value = ele.title;
         option.innerText = ele.title;
         document.querySelector('#movie-select').appendChild(option);
-
+        reviewsData[ele.title] = [];
     })
 }
 
@@ -55,6 +59,7 @@ const displaySelectedMovie = (movieObj) => {
     const movieDetailDiv = document.querySelector('#movie-details');
 
     movieDetailDiv.innerHTML = '';
+    document.querySelector('ul').innerHTML = '';
 
     const h3 = document.createElement('h3');
     const pYear =  document.createElement('p');
@@ -67,6 +72,8 @@ const displaySelectedMovie = (movieObj) => {
     movieDetailDiv.appendChild(h3);
     movieDetailDiv.appendChild(pYear);
     movieDetailDiv.appendChild(pDescription);
+
+
 }
 
 const addReview = () => {
@@ -84,6 +91,18 @@ const addReview = () => {
     const li = document.createElement('li');
     li.innerText = text;
 
-    document.querySelector('ul').appendChild(li);
+    const title = document.querySelector('h3').innerText;
 
+    reviewsData[title].push(li);
+
+    document.querySelector('ul').appendChild(li);
+}
+
+const loadReviews = (title) => {
+    console.log(title);
+    if (reviewsData[title].length > 0) {
+        reviewsData[title].forEach( ele => {
+            document.querySelector('ul').appendChild(ele);
+        })
+    }
 }
