@@ -4,7 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
   whenSubmitButtonIsClicked();
 })
 
+//____________________
+//ABOUT THE SELECT BOX DROPDOWN
+//we are *fetching*: movie title, release year, description
+//the movies should be options in our select box dropdown
+//the movies array for the select box should be: [""], movie1, movie2, etc] with the default
+  //selection blank
+//____________________
 
+//ABOUT THE EMPTY DIV
+//the div is empty at the start (no html, no text)
+//on user selecting a movie, that movie[i]'s info is put into the empty div
+  //adds i guess an h2 for movie title, p tag for year, p tag for description
+//on user selecting another movie, you clear the last film's info first
+  //then add the newly selected film's info to the page
+//____________________
 
 const whenSubmitButtonIsClicked = () => {
   //pull our button and say when clicked perform submitting function
