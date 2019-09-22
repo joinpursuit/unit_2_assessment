@@ -1,0 +1,22 @@
+body {
+  background-color: lavender;
+  display: grid;
+  font-family: monospace;
+  //you need to arrange everything in a column, centered width-wise
+}
+
+header {
+  //what do you need to have logo come up horizontally to left of h1 tag
+  align-content: center;    //img, h1 text should be in the center of the div
+  background-color: skyblue;
+  height: 150px;
+  margin-bottom: 30px;
+  padding: 10px 10px 10px 10px;
+  width: 70%;
+}
+
+#ghibliLogo {
+  //does this inherit the header section's 150px height or do you need to
+    //name it directly?
+  height: inherit;
+}
