@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unit 2 Assessment</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" text="text/javascript"></script>
+</head>
+<body>
+    <div id="outerDiv">
+        <div id="topPart">
+            <img id="image" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png" alt="">
+            <p id="topBannerParagraph">Ghibli Review App</p>
+        </div>
+        <div id="middleDiv">
+            <select name="" id="selectList">
+                <option value=""></option>
+            </select>
+        </div>
+        <div id="movieInfoDiv">
+            <h3 id="movieTitle"></h3>
+            <p id="releaseYear"></p>
+            <p id="movieDescription"></p>
+            <form id="my-form" action="/action_page.php">
+                <br>
+                <input type="text" name="firstname" value="" id="userInput" placeholder="Write a review here">
+                <input type="submit" value="Submit" onclick="addReview()">
+              </form> 
+        </div>
+    </div>
+</body>
+</html>
