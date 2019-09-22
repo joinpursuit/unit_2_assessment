@@ -1,0 +1,49 @@
+body{
+    background-color: #E6E6FA;
+    opacity: 50%;
+}
+
+#topPart {
+    margin-left: 11%;
+    margin-right: 15%;
+    background-color: lightblue;
+    height: 150px;
+    width: 70%;
+}
+
+#image {
+    height: 150px;
+    width: 35%;
+}
+
+#topBannerParagraph {
+    display: inline;
+    position: absolute;
+    margin-left: 30%;
+    font-size: 200%;
+    top: 5%;
+    right: 20%;
+    bottom: 90%;
+    font-weight: bold;
+}
+
+#selectList {
+    position: relative;
+    margin-top: 3%;
+    margin-left: 12%;
+    width: 15%;
+}
+
+#userInput {
+    vertical-align: top;
+    display: inline-block;
+    width: 30%;
+}
+
+#movieInfoDiv {
+    margin-left: 12%;
+}
+
+#movieDescription {
+    margin-right: 12%;
+}
