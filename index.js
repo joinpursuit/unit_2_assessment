@@ -9,7 +9,14 @@ const setupBtnListeners = () => {
 }
 
 const postReview = () => {
-    console.log("gotcha")
+    let emptyReview = document.createElement("li")
+    let filmName = document.querySelector("h3").innerHTML
+    let list = document.querySelector("#listy-mclistface")
+    let review = document.querySelector("#text-box").value
+    let fullReview = filmName.toUpperCase() + ": " + review
+    emptyReview.append(fullReview)
+    list.append(emptyReview)
+    clearInput()
 }
 
 document.addEventListener("submit", (event) => {
@@ -34,6 +41,7 @@ const selectFilm = () => {
     fetch(url)
         .then(response => response.json())
         .then(film => {
+            clearFilm()
             let container = document.querySelector("#micro-container")
             let title = document.createElement("h3")
             title.innerText = film.title
@@ -45,4 +53,14 @@ const selectFilm = () => {
             container.appendChild(date)
             container.appendChild(description)
         })
+}
+
+const clearFilm = () => {
+    let container = document.querySelector("#micro-container")
+    container.innerHTML = ""
+}
+
+const clearInput = () => {
+    let input = document.querySelector("#formy-mcformface")
+    input.reset()
 }

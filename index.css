@@ -1,0 +1,38 @@
+body {
+    font-family: monospace;
+    background: lavender;
+    display:grid;
+    grid-template-columns: 1fr;
+}
+
+img {
+    height: 150px;
+}
+
+#header {
+    width: 70%;
+    height: 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    align-items: center;
+    text-align: right;
+    background: skyblue;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+#main-container {
+    width: 60%;
+    justify-self: center
+}
+
+#text-box {
+    width: 400px;
+}
+
+
+/* li::before {
+    content: url();
+    font-weight: bold;
+} */
