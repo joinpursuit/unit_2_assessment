@@ -1,0 +1,50 @@
+body{
+    background-color: lavender;
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: center;
+}
+
+.header{
+    width: 70%;
+    height: 150px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: skyblue;
+    background-size: inherit;
+    display: table;
+
+
+}
+img{
+    height: inherit;
+    vertical-align: middle;
+    display: table-cell;
+    width: 55%;
+
+}
+h1{
+    font-family: monospace;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: justify;
+}
+
+
+.mainArea{
+    width: 60%;
+    justify-content: left;
+} 
+    
+
+
+form {
+    display: inline;
+}
+#text {
+    display: inline;
+    width: 400px
+}
+#submit {
+    display: inline;
+}
