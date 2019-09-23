@@ -8,6 +8,7 @@
 */
 
 
+
 /* FUNCTIONS on DOMLoaded -- begin -- */
 document.addEventListener("DOMContentLoaded", async () => {
   let ghibData = await setThePage();
@@ -30,7 +31,7 @@ const handleError = (error) => {
   console.log(`HAVE ERROR: `, error);
 }
 
-const genRandom = (max) => { /* MIN: 0 inclusive, MAX inclusive */
+const genRandom = (max) => { /* MIN: 1 inclusive, MAX inclusive */
   return Math.floor(Math.random() * max) + 1;
 }
 
