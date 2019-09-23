@@ -24,10 +24,12 @@ img{
 
 }
 h1{
+    font-family: monospace;
     vertical-align: middle;
     display: table-cell;
     text-align: justify;
 }
+
 
 .mainArea{
     width: 60%;
