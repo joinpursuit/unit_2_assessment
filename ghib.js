@@ -21,7 +21,7 @@ const fetchFilms = () => {
     filmRequest.send()
     // console.log(filmRequest)
 
-    // retrieving only the title,release year and description
+
 }
 
 
@@ -43,25 +43,3 @@ const selectFilm = (films) => {
 })
 }
 
-
-
-
-
-// let hTag3 = document.body.querySelector("h3")
-// if(img === null){
-//     let dogImg = document.createElement("img")
-//     dogImg.src = url
-//     document.body.appendChild(dogImg)
-// }else{
-//     let newImg = document.createElement('img')
-//     newImg.src = url;
-//     img.parentNode.replaceChild(newImg,imgA);
-// }
-
-
-
-
-
-
-//the title is bold in li
-// the review is not bold
