@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             let movieURL = `${baseURL}/${selectMenu.value}`;
             selectedMovie = await onlineRequest(movieURL);
-            console.log(selectedMovie)
             form.style.visibility = "visible";
         }
 
@@ -35,7 +34,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             let reviewsContainer = document.querySelector("#reviews");
 
             let newReview = document.createElement("li");
-            newReview.innerHTML = `<strong>${title}:</strong> ${reviewInput.value}`;
+            let boldText = document.createElement("strong");
+            boldText.innerText = `${title}: `;
+            newReview.appendChild(boldText);
+            let newSpan = document.createElement("span");
+            newSpan.innerText = reviewInput.value;
+            newReview.appendChild(newSpan);
             reviewsContainer.appendChild(newReview);
             reviewInput.value = "";
         }
