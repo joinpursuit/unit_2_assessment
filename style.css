@@ -50,6 +50,10 @@ div#header {
   background-color: skyblue;
 }
 
+h1 {
+  transition: color 0.8s;
+}
+
 div#header > img {
   height: 150px;
 }
@@ -107,9 +111,17 @@ div#currentfilm {
 }
 
 h3 {
-  font-size: 1.5em;
   margin-block-start: 0.2em;
   margin-block-end: 0.2em;
+
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+h3 + p {
+  color: brown;
+  margin-block-start: 0em;
+  margin-block-end: 1em;
 }
 
 form#reviewform {
@@ -125,12 +137,9 @@ form#reviewform input#newreview {
   padding-right: 5px;
   width: 400px;
 
-  border: 2px inset #fff; 
+  border: 2px inset #fff;
+  outline: none;
   background: rgba(255,255,255,0.7);
-}
-
-form#reviewform input#revtitle {
-  display: none;
 }
 
 div#subtext {

@@ -5,19 +5,22 @@
 /*  TODO
     - persistent array for reviews across titles
     - refactoring
+    - easter egg hani
 */
 
 
 
+let savedReviewsArr = [];
+
 /* FUNCTIONS on DOMLoaded -- begin -- */
 document.addEventListener("DOMContentLoaded", async () => {
-  let ghibData = await setThePage();
-
+  let ghibData = await setThePage(); /* RETRIEVE API DATA AND SAVE TO VAR ghibData */
   // console.log('inDOML: ', ghibData); // SAVED FOR DEBUGGING DATA
 
   let filmSelect = document.querySelector('#filmselect');
   filmSelect.addEventListener('change', () => {
       populateCurrent(ghibData, filmSelect.value);
+      resetFocus();
   });
   document.querySelector('#reviewform').addEventListener('submit', (e) => {
       processReview(e, ghibData);
@@ -36,7 +39,8 @@ const genRandom = (max) => { /* MIN: 1 inclusive, MAX inclusive */
 }
 
 const resetFocus = () => {
-  document.querySelector('#filmselect').focus();
+  document.querySelector('#filmselect').blur();
+  document.querySelector('#newreview').blur();
 }
 
 const resetInput = () => {
@@ -90,7 +94,8 @@ const populateCurrent = (dataArr, index) => {
   document.querySelector('#year').innerText = dataArr[index].release_date;
   document.querySelector('#description').innerText = dataArr[index].description;
 
-  document.querySelector('#revtitle').value = dataArr[index].title; /* SETUP FOR REVIEW IF SUBMITTED */
+  resetInput();
+  resetFocus();
 }
 
 const setThePage = async () => {
@@ -109,13 +114,18 @@ const setThePage = async () => {
 
 
 /* REVIEWS SYS FUNCTIONS */
-const addReview = (entryStr, dataArr) => {
+const addReview = (entryStr) => {
   let reviewsList = document.querySelector('#reviewslist');
-  let titleReviewed = document.querySelector('#revtitle').value;
+  let titleReviewed = document.querySelector('h3').innerText;
 
   let makingLI = document.createElement('li');
-  makingLI.innerHTML = `<strong>${titleReviewed} ✔︎</strong> ${entryStr}`;
+  let makingStrong = document.createElement('STRONG');
+  let makingText = document.createTextNode(entryStr);
 
+  makingStrong.innerText = `${titleReviewed} ✔︎ `;
+
+  makingLI.appendChild(makingStrong);
+  makingLI.appendChild(makingText);
   reviewsList.appendChild(makingLI);
 }
 
@@ -129,7 +139,7 @@ const processReview = (e, dataArr) => {
     resetInput();
   } else {
     document.querySelector('#formerrors').innerHTML = "";
-    addReview(entry, dataArr);
+    addReview(entry);
     resetInput();
     resetFocus();
   }
