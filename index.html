@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Unit 2 Assesment</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <br>
+           <span>
+            <p>Pick a Studio Ghibli movie to read it's description.<br>
+            Feel free to leave a review of any Ghibli film.</p>
+            <h1 class="header_one">Review App</h1>
+            </span>
+        </div>
+
+        <div class="middle">
+            <select class="select_box" onchange="getInfo()">
+                <option>Select a Ghibli Movie</option>
+            </select>
+            <div class="movie_info">
+                <h3></h3>
+                <p id="director"></p>
+                <p id="year"></p>
+                <p id="description"></p>
+            </div>
+            <form>
+                <input type="text" class="submit">
+                <input type="submit" value="Submit Review" class="submit">
+            </form>
+
+        </div>
+    
+        <div class="bottom">
+        </div>
+    </div>
+</body>
+</html>

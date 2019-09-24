@@ -1,0 +1,62 @@
+body{
+    background-color: lavender;
+    color: coral;
+}
+
+.header_one{
+    text-align: right;
+    font-weight: bolder;
+    position: inherit;
+    padding-top: 50px;
+    padding-right: 55px;
+    
+}
+
+.ghost{
+    z-index: 0;
+    left: 10vw;
+    height: 300px;
+    width: 100px;
+    z-index: -1;
+}
+
+.movie_info{
+    max-width: 50%;
+}
+
+.top{
+    display: grid;
+    height: 25vh; 
+    background-image: url(./Studio_Ghibli_logo.png);
+    background-repeat: no-repeat;
+    background-size: 250px;
+    background-position-x: 98%;
+    background-position-y: 0%;
+}
+
+.middle{
+    display: grid;
+    height: 50vh;
+}
+
+.bottom{
+    display: grid;
+    height: 25vh;
+    background-image: url(./spirited_away.png);
+    background-repeat: no-repeat;
+    background-size: 25%
+    
+}
+
+.select_box{
+    max-width: 190px;
+    max-height: 50px;
+    background-color: coral;
+    color: lavender;
+}
+
+.submit{
+    background-color: coral;
+    color: lavender;
+    border-radius: 30px;
+}
