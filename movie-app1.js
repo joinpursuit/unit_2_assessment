@@ -1,28 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const selector = document.querySelector('#select-movie')
     const form = document.querySelector('#form')
+    const mainDiv = document.querySelector('#maincontent')
+   
+    const grabMovies = async () => {
+        const movieRequest = await axios.get(mainURL)
+        const movieInfo = movieRequest.data
+        console.log(movieInfo)
+        createMovieOptions(movieInfo)
+    }
+    grabMovies()
 
     selector.addEventListener('change', () => {
-       if (mainDiv === '') {
+       if (mainDiv.innerHTML === '') {
            displayMovieContent(selector.selectedIndex - 1)
-       } else {
+       } else if (mainDiv.innerHTML !== '') {
+           mainDiv.innerHTML = ''
            displayMovieContent(selector.selectedIndex - 1)
        }
     }) 
+
     form.addEventListener('submit', postReview)
+    
 })
 
-const mainDiv = document.querySelector('#maincontent')
-const optionVal = document.querySelector('option')
 const mainURL = "https://ghibliapi.herokuapp.com/films"
-
-const grabMovies = async () => {
-    const movieRequest = await axios.get(mainURL)
-    const movieInfo = movieRequest.data
-    console.log(movieInfo)
-    createMovieOptions(movieInfo)
-}
-grabMovies()
 
 const createMovieOptions = (movies) => {
     const selector = document.querySelector('#select-movie')
@@ -58,16 +61,23 @@ const displayMovieContent = async (optionId) => {
     mainDiv.appendChild(movieDiv)
  }
 
-//  displayMovieContent(3)
+
 
 
 const postReview = () => {
     event.preventDefault()
 
+    const selector = document.querySelector('#select-movie')
     const reviewsList = document.querySelector('#reviews')
+    const reviewInput = document.querySelector('#write-review')
     const reviewPost = document.createElement('li')
+    const formInput = reviewInput.value
+
+    reviewPost.innerText = selector.value + ': ' + formInput
+    reviewsList.appendChild(reviewPost)
     
-    // const formInput = 
+     formInput.innerText === ''
+   
 }
 
 
