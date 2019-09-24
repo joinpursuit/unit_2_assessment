@@ -83,7 +83,4 @@ const addMovieToDOM = (movie) => {
 
     let description = document.querySelector("#description");
     description.innerText = movie.description;
-
-    let review = document.querySelector("ul");
-    review.innerHTML = "Reviews:"
 }
