@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Unit 2 Movie API</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,9 +19,9 @@
         </div>
     </div>
     <div id="main_content">
-        <select onchange="loadMovieInfo(this.options[this.selectedIndex].innerText);"><option></option></select>
+        <select><option></option></select>
         <div id="movie_info"><h3>To begin select a movie</h3></div>
-        <form onsubmit="event.preventDefault();addReview();" style="display: none">
+        <form style="display: none">
             <input type="text" required>
             <button type="submit">Submit Review</button>
         </form>

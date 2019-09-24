@@ -1,44 +1,42 @@
-const loadMovieInfo = (name) => {
-    if (!name) { //This is runs when selected option is blank
-        document.querySelector('#movie_info').innerHTML = `<h3>To begin select a movie</h3>`;
-        document.querySelector('form').style.display = 'none';
-        return; //Prevents the rest of function from running
-    }
-    let filmObj = filmsObject[name];
-    let title = document.createElement('h3');
-    let year = document.createElement('p');
-    let description = document.createElement('p');
-    let filmArr = [title, year, description];
-    
-    title.innerText = filmObj.title;
-    year.innerText = filmObj.release_date;
-    description.innerText = filmObj.description;
-    filmArr = [title, year, description];
-    document.querySelector('form').style.display = 'block';
-    document.querySelector('#movie_info').innerText = '';
-    filmArr.forEach(item => document.querySelector('#movie_info').appendChild(item));
+document.addEventListener('DOMContentLoaded', () => {
+    fetch(`https://ghibliapi.herokuapp.com/films`)
+        .then(response => response.json())
+        .then(data => data.forEach(film => createFilmOption(film)));
+
+    let reviewForm = document.querySelector('form');
+    reviewForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        addReview();
+    });
+
+    let movieSelector = document.querySelector('select'); //grabbing the selector
+    movieSelector.addEventListener('change', (event) => {
+        let selectedMovie = event.target.selectedOptions[0].value; //grabs selected option and checks their inneText
+        loadMovieInfo(selectedMovie);
+    });
+})
+
+const loadMovieInfo = (movie) => {
+    let movieInfo = document.querySelector('#movie_info');
+    let form = document.querySelector('form');
+    movie ? form.style.display = 'block' : form.style.display = 'none';
+    movie ? movieInfo.innerHTML = movie : movieInfo.innerHTML = '<h3>To begin select a movie</h3>';
 }
 
 const addReview = () => {
     let review = document.createElement('li');
-    review.innerHTML = `<strong>${document.querySelector('h3').innerText}:</strong> ${document.querySelector('input').value}`;
-    document.querySelector('input').value = '';
-    document.querySelector('ul').appendChild(review);
+    let movieTitle = document.createElement('strong');
+
+    //using this method prevents malicious input unlike using innerHTML
+    movieTitle.innerText = document.querySelector('h3').innerText + ': '; //adding the movietitle to the element
+    review.innerText = document.querySelector('input').value;
+    review.prepend(movieTitle); //prepend adds element before first child
+    document.querySelector('ul').appendChild(review); //appending emtpy review to unordered list
 }
 
-const createFilmOption = (name) => {
+const createFilmOption = (film) => {
     let option = document.createElement('option');
-    option.innerText = name;
-    console.log(option.inn);
-    
+    option.innerText = film.title;
+    option.value = `<h3>${film.title}</h3><p>${film.release_date}</p><p>${film.description}</p>`
     document.querySelector('select').appendChild(option);
 }
-
-let filmsObject = {}; //Global variable used in loadMovieInfo 
-const fetchMovies = async () => {
-    let films = await axios.get(`https://ghibliapi.herokuapp.com/films`);
-    films.data.forEach(film => createFilmOption(film.title));
-    films.data.forEach(film => filmsObject[film.title] = film);
-}
-
-fetchMovies();
