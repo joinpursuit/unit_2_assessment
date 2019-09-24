@@ -1,29 +1,22 @@
 const baseURL = "https://ghibliapi.herokuapp.com/films"
 
 document.addEventListener("DOMContentLoaded", async () => {
-    let allMoviesData = await getAllMovies();
+    let allMoviesData = await onlineRequest(baseURL);
     let selectedMovie;
 
     addMoviesTitlesToSelections (allMoviesData);
 
-    let SelecMenu = document.querySelector("#selectBox");
-    SelecMenu.addEventListener("change", () => {
-
-        let MoviesList = document.querySelectorAll("option");
-
-        if (MoviesList[0].selected) {
+    let selectMenu = document.querySelector("#selectBox");
+    selectMenu.addEventListener("change", async () => {
+        if (selectMenu.value === "") {
             selectedMovie = null;
-            return; // USING THIS TO PREVENT REVIEW WHEN NO SELECTION
+        } else {
+            let movieURL = `${baseURL}/${selectMenu.value}`;
+            selectedMovie = await onlineRequest(movieURL);
         }
 
-        for (let i = 1; i < MoviesList.length; i++) {
+        addMovieToDOM(selectedMovie);
 
-            if (MoviesList[i].selected) {
-                selectedMovie = MoviesList[i].innerText;
-                getInfoAboutMovie(allMoviesData, selectedMovie);
-                break;
-            }
-        }
     }) // END OF EVENT LISTNER FOR SELECTION
 
     let form = document.querySelector("form");
@@ -46,8 +39,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 }) // DOM CONTENT LOADED
 
-const getAllMovies = async () => {
-    let onlineResponse = await axios.get(baseURL)
+const onlineRequest = async (url) => {
+    let onlineResponse = await axios.get(url)
                                     .catch (error => {
                                         console.log(error)
                                     })
@@ -55,32 +48,29 @@ const getAllMovies = async () => {
 }
 
 const addMoviesTitlesToSelections = (fullMoviesInfo) => {
-    let SelecMenu = document.querySelector("#selectBox");
+    let selectMenu = document.querySelector("#selectBox");
     
     for (let movie of fullMoviesInfo) {
         let newOption = document.createElement("option");
-        newOption.value = movie.title;
+        newOption.value = movie.id;
         newOption.innerText = movie.title;
-        SelecMenu.appendChild(newOption);
-    }
-}
-
-const getInfoAboutMovie = (allFilms, title) => {
-    for (let movie of allFilms) {
-        if (movie.title === title) {
-            addMovieToDOM(movie);
-            break;
-        }
+        selectMenu.appendChild(newOption);
     }
 }
 
 const addMovieToDOM = (movie) => {
-    let title = document.querySelector("#title");
-    title.innerText = movie.title;
-
-    let year = document.querySelector("#year");
-    year.innerText = movie.release_date;
-
-    let description = document.querySelector("#description");
-    description.innerText = movie.description;
+    if (movie) {
+        let title = document.querySelector("#title");
+        title.innerText = movie.title;
+    
+        let year = document.querySelector("#year");
+        year.innerText = movie.release_date;
+    
+        let description = document.querySelector("#description");
+        description.innerText = movie.description;
+        
+    } else {
+        let infoDiv = document.querySelector("#Info");
+        infoDiv.innerText = "Please select a movie";
+    }
 }
