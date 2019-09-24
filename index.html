@@ -9,6 +9,7 @@
    <title>Unit 2 Assessment: Studio Ghibli Movie App | Joseph P. Pasaoa</title>
    <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
    <script src="./index.js" type="text/javascript"></script>
+   <script src="./sampleReviews.js" type="text/javascript"></script>
    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
    <link href="./style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -37,7 +38,8 @@
             </p> -->
          <h4>Submit a review</h4>
          <form id="reviewform">
-            <input form="reviewform" type="text" name="newreview" id="newreview" placeholder="What did you think?" autocomplete="off" />
+            <input form="reviewform" type="text" id="newreview" placeholder="What did you think?" autocomplete="off" />
+            <input form="reviewform" type="hidden" id="currentFilmID" value="" />
             <div id="subtext">
                <input form="reviewform" type="submit" value="Submit!" />
                <div id="formerrors"></div>
@@ -45,24 +47,11 @@
          </form>
          <h4>Reviews</h4>
          <ul id="reviewslist">
-            <li>
-               <strong>beginning of the and ✔︎</strong> 
-               It was okay. That's what everyone said. And then I bought the $25 IMAX ticket to watch it in 
-               the theatre by myself. Boy was I unimpressed. At least they gave me an extra squirt of butter in my popcorn.
-            </li>
-            <li>
-               <strong>sky outside the moat ✔︎</strong> 
-               Not that great. Had the measles.
-            </li>
             <!-- SAMPLE LI BLOCK for CODING REFERENCE
             <li>
                <strong>can do no wrong ✔︎</strong> 
                FAV. MOVEEE. EVAAA.
             </li> -->
-            <li>
-               <strong>stew dioghibli✔︎</strong> 
-               FAV. MOVEEE. EVAAA.
-            </li>
          </ul>
       </div>
 

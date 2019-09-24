@@ -3,35 +3,38 @@
 //
 
 /*  TODO
-    - persistent array for reviews across titles
+    - revealing module pattern attempt for practice ofc
+    - All reviews page (add as final obj to masterData?)
+    - After All reviews page implemented, dynamic toggle of reviews title display
     - refactoring
     - easter egg hani
 */
 
 
 
-let savedReviewsArr = [];
+let masterDataObj = {};
 
 /* FUNCTIONS on DOMLoaded -- begin -- */
 document.addEventListener("DOMContentLoaded", async () => {
-  let ghibData = await setThePage(); /* RETRIEVE API DATA AND SAVE TO VAR ghibData */
-  // console.log('inDOML: ', ghibData); // SAVED FOR DEBUGGING DATA
+  let masterDataObj = await setThePage(); /* RETRIEVE API DATA AND PROCESS TO VAR masterDataObj */
+  // console.log('made postDOML: ', masterDataObj); // SAVED FOR DEBUGGING DATA
 
   let filmSelect = document.querySelector('#filmselect');
   filmSelect.addEventListener('change', () => {
-      populateCurrent(ghibData, filmSelect.value);
+      dressCurrentFilm(masterDataObj, filmSelect.value);
       resetFocus();
   });
   document.querySelector('#reviewform').addEventListener('submit', (e) => {
-      processReview(e, ghibData);
+      processReview(e);
   })
+  
 });
 /* FUNCTIONS on DOMLoaded -- end == */
 
 
 
-const handleError = (error) => {
-  console.log(`HAVE ERROR: `, error);
+const handleError = (functionName, error) => {
+  console.log(`${functionName} ERROR: `, error);
 }
 
 const genRandom = (max) => { /* MIN: 1 inclusive, MAX inclusive */
@@ -57,23 +60,32 @@ const clearStage = (location) => {
 const getGhibliData = async () => {
   try {
     let response = await axios.get('https://ghibliapi.herokuapp.com/films');
-    return response.data;
+    for (let filmObj of response.data) {
+      masterDataObj[filmObj.id] = {
+        title: filmObj.title,
+        year: filmObj.release_date,
+        desc: filmObj.description,
+        userReviews: []
+      }
+    }
+    return masterDataObj;
   } catch {
-    handleError();
+    handleError(getGhibliData.name);
   }
 }
 
-const populateSelect = (dataArr) => {
+const populateSelect = (mDataObj) => {
   let filmSelect = document.querySelector('#filmselect');
-  for (let i = 0; i < dataArr.length; i++) {
+  
+  for (let filmObjKey in mDataObj) {
     let makingOpt = document.createElement('option');
-      makingOpt.value = i;
-      makingOpt.innerText = dataArr[i].title;
+      makingOpt.value = filmObjKey;
+      makingOpt.innerText = mDataObj[filmObjKey].title;
     filmSelect.appendChild(makingOpt);
   }
 }
 
-const populateCurrent = (dataArr, index) => {
+const dressCurrentFilm = (mDataObj, indexID) => {
   let stage = document.querySelector('#currentfilm');
 
   if (stage.childNodes.length < 3) {
@@ -90,9 +102,18 @@ const populateCurrent = (dataArr, index) => {
     stage.appendChild(makingPYear);
     stage.appendChild(makingPDes);
   }
-  document.querySelector('h3').innerText = dataArr[index].title;
-  document.querySelector('#year').innerText = dataArr[index].release_date;
-  document.querySelector('#description').innerText = dataArr[index].description;
+  document.querySelector('h3').innerText = mDataObj[indexID].title;
+  document.querySelector('#year').innerText = mDataObj[indexID].year;
+  document.querySelector('#description').innerText = mDataObj[indexID].desc;
+
+  document.querySelector('#currentFilmID').value = indexID;
+
+  // Persistent Reviews Sys //
+  let reviewsList = document.querySelector('#reviewslist');
+  clearStage(reviewsList);
+  for (let savedReview of mDataObj[indexID].userReviews) {
+    printReview(savedReview);
+  }
 
   resetInput();
   resetFocus();
@@ -100,21 +121,24 @@ const populateCurrent = (dataArr, index) => {
 
 const setThePage = async () => {
   try {
-    let ghibData = await getGhibliData(); /* GHIBDATA IS AN ARRAY OF FILM OBJECTS */
+    let masterDataObj = await getGhibliData(); /* masterDataObj IS OUR CUSTOM OBJECT OF FILM OBJECTS BY IDS */
 
-    populateSelect(ghibData);
-    populateCurrent(ghibData, genRandom(ghibData.length));
+    // addSampleRevs(masterDataObj); /* DE-COMMENT IN TO ACTIVATE SAMPLE REVIEWS */
 
-    return ghibData;
+    populateSelect(masterDataObj);
+    let selectedId = Object.keys(masterDataObj)[genRandom(Object.keys(masterDataObj).length)];
+    dressCurrentFilm(masterDataObj, selectedId);
+    
+    return masterDataObj;
   } catch {
-    handleError();
+    handleError('setThePage');
   }
 }
 
 
 
 /* REVIEWS SYS FUNCTIONS */
-const addReview = (entryStr) => {
+const printReview = (entryStr) => {
   let reviewsList = document.querySelector('#reviewslist');
   let titleReviewed = document.querySelector('h3').innerText;
 
@@ -129,7 +153,7 @@ const addReview = (entryStr) => {
   reviewsList.appendChild(makingLI);
 }
 
-const processReview = (e, dataArr) => {
+const processReview = (e) => {
   e.preventDefault();
 
   let entry = newreview.value.trim();
@@ -139,7 +163,8 @@ const processReview = (e, dataArr) => {
     resetInput();
   } else {
     document.querySelector('#formerrors').innerHTML = "";
-    addReview(entry);
+    printReview(entry);
+    masterDataObj[e.target[1].value].userReviews.push(entry); /* PUSHES REVIEW INTO MASTERDATAOBJ */
     resetInput();
     resetFocus();
   }
