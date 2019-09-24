@@ -6,20 +6,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     addMoviesTitlesToSelections (allMoviesData);
 
+    let form = document.querySelector("form");
+    form.style.visibility = "hidden";
+
     let selectMenu = document.querySelector("#selectBox");
     selectMenu.addEventListener("change", async () => {
         if (selectMenu.value === "") {
             selectedMovie = null;
+            form.style.visibility = "hidden";
         } else {
             let movieURL = `${baseURL}/${selectMenu.value}`;
             selectedMovie = await onlineRequest(movieURL);
+            console.log(selectedMovie)
+            form.style.visibility = "visible";
         }
 
         addMovieToDOM(selectedMovie);
 
     }) // END OF EVENT LISTNER FOR SELECTION
 
-    let form = document.querySelector("form");
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -59,18 +64,18 @@ const addMoviesTitlesToSelections = (fullMoviesInfo) => {
 }
 
 const addMovieToDOM = (movie) => {
+    let title = document.querySelector("#title");
+    let year = document.querySelector("#year");
+    let description = document.querySelector("#description");
+    
     if (movie) {
-        let title = document.querySelector("#title");
         title.innerText = movie.title;
-    
-        let year = document.querySelector("#year");
         year.innerText = movie.release_date;
-    
-        let description = document.querySelector("#description");
         description.innerText = movie.description;
-        
+
     } else {
-        let infoDiv = document.querySelector("#Info");
-        infoDiv.innerText = "Please select a movie";
+        title.innerText = "";
+        year.innerText = "";
+        description.innerText = "";
     }
 }
