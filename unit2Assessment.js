@@ -54,9 +54,9 @@ function fetchMovieInfo() {
           currentDescription.innerText = movieDescription;
 
           let movieArea = document.getElementById("#selectedMovieSection");
-          document.movieArea.appendChild("currentMovieTitle");
-          document.movieArea.appendChild("currentReleaseDate");
-          document.movieArea.appendChild("currentDescription");
+          movieArea.appendChild(currentMovieTitle);
+          movieArea.appendChild(currentReleaseDate);
+          movieArea.appendChild(currentDescription);
         }
         whenSubmitButtonIsClicked();
     })
