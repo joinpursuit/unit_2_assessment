@@ -27,6 +27,10 @@ header img{
 
 #mainContainer {
     display: block;
- position: fixed;
-    left: 20%;
+    top: 5px;
+    left: 40px;
+    margin: 15px auto;
+    height: 165px;
+    width: 70%;
+    
 }

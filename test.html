@@ -9,30 +9,37 @@
     <script src="test.js"></script>
     <link rel="stylesheet" href="test.css">
 </head>
+
 <body>
     <header><h1> Ghibli Review App</h1>
     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png" alt="">
     </header>
+
     <div id="mainContainer">
+
+          
+
     <form id="selectButton">
-        <select id="filmTitle" onmousedown= "movieProperties()">
-            
+        <select id="filmTitle" onchange="movieProperties()">
+            <option> </option>
         </select>
     </form>
 
     <div id="innerContainer">
-        <h3 id="title"></h3>
-        <p id="year"></p>
-        <p id="description"></p>
+            <h3 id="title"></h3>
+            <p id="year"></p>
+            <p id="description"></p> 
+    </div>
+    <br>
 
         <div id="form">
             <form>
                 <input type="text" name="review" id="review">
                 <input type="submit" value="submit">
-                <ul id="submittedReview"></ul>
             </form>
+
+            <ul id="submittedReview"></ul>
             
-        </div>
     </div>
 </div>
 

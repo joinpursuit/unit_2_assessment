@@ -1,5 +1,4 @@
-// document.addEventListener('submit', (event) => {
-//     event.preventDefault();
+
 let x = {};
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log('DOM Has Loaded')
 //    selectButton();
     fetchMovie();
+    // document.addEventListener('submit', (event) => {
+    // event.preventDefault();
 
 })
 
@@ -16,27 +17,18 @@ const selectButton = (arr) => {
     
     
     for(let i = 0;  i <= arr.length - 1; i++) { 
-        let newSelect = document.createElement("option");
-        newSelect.value = "title"
-        if(newSelect.value){
-            newSelect.text  = arr[i].title;
-        }
-            
-        // let title = arr[i].title
-        // newSelect.options = title;
 
+        let newSelect = document.createElement("option");
+        newSelect.value = arr[i].id
+        newSelect.innerText  = arr[i].title;
+        
         // console.log(arr)
-        console.log(newSelect);
+        // console.log(newSelect);
         // console.log(title);
         
     select.appendChild(newSelect);
-    
     }
-    // select.addEventListener("click", movieProperties)
-    
-    
-
-}
+ }
 
 function fetchMovie() {
     fetch("https://ghibliapi.herokuapp.com/films/")
@@ -49,51 +41,55 @@ function fetchMovie() {
             // title.innerText= data[i].title
             // console.log(title)
             selectButton(data)
-            // movieProperties(data)
         // }
         // console.log(data);
-         movieComment(data)
+        //  movieComment(data)
     })
-    // .catch(err => {
-    //     console.log("err: " + err)
-    // })
+    .catch(err => {
+        console.log("err: " + err)
+    })
 }
 
-const movieProperties = (arr) => {
+const movieProperties = () => {
+    let select = document.querySelector("select")
     let container = document.querySelector("#innerContainer")
     let movieTitle = document.querySelector("#title")
     let movieYear = document.querySelector("#year")
     let movieDescription = document.querySelector("#description")
+    let id = select.value
 
-    console.log(arr)
-    
-    // for(let i = 0; i < arr.length-1; i++){
+            fetch("https://ghibliapi.herokuapp.com/films/" + id )
 
-        movieTitle.innerHTML = arr.title
-        console.log(movieTitle)
-
-        movieYear.innerText = arr.release_date
-        console.log(movieYear)
-
-        movieDescription.innerText = arr.description 
-        console.log(movieDescription) 
-
-    container.appendChild(movieTitle) 
-    container.appendChild(movieYear)
-    container.appendChild(movieDescription)
-// }
+            .then((response) =>{
+                return response.json();
+                // console.log(response)
+            })
+            .then(data => {
+                
+                movieTitle.innerText = data.title
+                // console.log(movieTitle)
+                
+                movieYear.innerText = data.release_date
+                // console.log(movieYear)
+        
+                movieDescription.innerText = data.description 
+                // console.log(movieDescription) 
+        
+            container.appendChild(movieTitle) 
+            container.appendChild(movieYear)
+            container.appendChild(movieDescription)
+            })
+            }
             
-
-}
-
-// })
  
 const movieComment = (str) => {
     let input = document.querySelector("#review")
     let commentList = document.querySelector("#submittedReview")
-if(!input){
-        let list_item = document.createElement("li")
-        commentList.appendChild(list_item)
-        console.log(list_item)
-    }
+
+
+    input.addEventListener('submit', )
+        // let list_item = document.createElement("li")
+        // commentList.appendChild(list_item)
+        // console.log(list_item)
+    
 }
