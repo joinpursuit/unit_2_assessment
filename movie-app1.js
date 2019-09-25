@@ -10,7 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(movieInfo)
         createMovieOptions(movieInfo)
     }
-    grabMovies()
+   /*
+   
+   const movieData = grabMovies()
+   createMovieOptions(movieData)
+   */
+   grabMovies()
 
     selector.addEventListener('change', () => {
        if (mainDiv.innerHTML === '') {
@@ -27,17 +32,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const mainURL = "https://ghibliapi.herokuapp.com/films"
 
+// const createMovieOptions = (movies) => {
+//     const selector = document.querySelector('#select-movie')
+//     // let index = 1
+//     for (let i = 0; i < movies.length; i++){
+//         const option = document.createElement('option')
+//         option.text = movies[i].title
+//         option.id = i
+//         selector.add(option)
+//         // index++
+//     }
+// }
+
 const createMovieOptions = (movies) => {
-    const selector = document.querySelector('#select-movie')
-    let index = 1
-    for (let i = 0; i < movies.length; i++){
-        const option = document.createElement('option')
-        option.text = movies[i].title
-        option.id = index
-        selector.add(option)
-        index++
-    }
+    movies.map(renderList)
+    // let index = 1
+    // for (let i = 0; i < movies.length; i++){
+  
+    //     index++
+    // }
 }
+
+const renderList = (element, index) => {
+
+    const option = document.createElement('option')
+    option.text = element.title
+    option.id = index
+    document.querySelector('#select-movie').add(option)
+}
+
 
 const displayMovieContent = async (optionId) => {
 
@@ -63,7 +86,6 @@ const displayMovieContent = async (optionId) => {
 
 
 
-
 const postReview = () => {
     event.preventDefault()
 
@@ -75,8 +97,8 @@ const postReview = () => {
 
     reviewPost.innerText = selector.value + ': ' + formInput
     reviewsList.appendChild(reviewPost)
-    
-     formInput.innerText === ''
+    console.log(formInput.innerText)
+     reviewInput.value = ''
    
 }
 
