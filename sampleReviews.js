@@ -3,7 +3,7 @@
 // SAMPLE REVIEWS ADD-ON
 //
 
-const addSampleRevs = (mDataObj) => {
+const addSampleRevs = (gDataObj) => {
   let g = 0;
   let sampleRevsArr = [
     `It was okay. That's what everyone said. And then I bought the $25 IMAX ticket to watch it in the theatre by myself. Boy was I unimpressed. At least they gave me an extra squirt of butter in my popcorn.`,
@@ -34,11 +34,11 @@ const addSampleRevs = (mDataObj) => {
     `Sea luptatum dissentias at, ut sea hinc epicurei? Timeam complectitur vis an!`,
     `Ne eum fugit laudem, possit conceptam voluptatibus eos no.`
   ];
-  for (let filmObj in mDataObj) {
-    mDataObj[filmObj].userReviews.push(sampleRevsArr[g]);
+  for (let filmObj in gDataObj) {
+    gDataObj[filmObj].userReviews.push(sampleRevsArr[g]);
     g += 1;
     if (g % 5 === 1) {
-      mDataObj[filmObj].userReviews.push(sampleRevsArr[g]);
+      gDataObj[filmObj].userReviews.push(sampleRevsArr[g]);
       g += 1;
     }
   }
