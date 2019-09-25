@@ -1,0 +1,100 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-image: url("Studio_Ghibli_logo.svg.png");
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: bottom right; */
+    background-color: lavender;
+    font-family: sans-serif;
+    position: relative;
+
+}
+
+#head {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+    padding: 10px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: skyblue;
+}
+#head img{
+    height: 150px;
+    position: relative;
+    left: 0;
+}
+#head h1{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+#mainArea {
+    width: 86%;
+    position: relative;
+    margin-left: 14%;
+    padding:0; 
+}
+input[type="text"] {
+    width: 400px;
+    height: 20px;
+}
+input[type="submit"] {
+    background-color: buttonface;
+    border: 1px solid gray;
+    border-radius: 7px;
+    height: 25px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 850px) {
+    body {
+        width: 100%;
+    }
+    #head {
+        width: 100%;
+        padding: 20px 10px;
+        
+    }
+    #head h1{
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    body {
+        width: 80%;
+    }
+    #head {
+        display: flex;
+        flex-flow: column;
+    }
+    input[type="text"] {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #head img{
+        height: auto;
+        width: 100%;
+        position: relative;
+        left: 0;
+    }
+    #mainArea {
+        width: 100%;
+        margin-left: 0; 
+    }
+}
