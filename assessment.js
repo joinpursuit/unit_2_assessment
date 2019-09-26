@@ -1,35 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOMContent is loaded")
-    selectTitle()
-    // displaySelectedFilm(film)                                                                                                                                                                                      select", selectTitle)
-    // let reviewInput = document.querySelector("#text-input")
-    // let form = document.querySelector("form")
-    // form.addEventListener("submit", (event) => {
-    //       let textInput = document.querySelector("#text-input")
-    //textInput.innerText = ""
-    let inputBtn = document.querySelector("#btn-input")
-    inputBtn.addEventListener("submit", (reviewSection))
-    //event.preventDefault()
-    //   if (textInput.innerText = "") {
-    //      form.appendChild(textInput)
-    // })
-
-    // console.log("review box", reviewInput)
-    // reviewInput.addEventListener("click",  {
-
-    // })
+    fetchData()
+    // let inputBtn = document.querySelector("#btn-input")
+    // inputBtn.addEventListener("submit", (reviewSection))
+    
 })
 
-const selectTitle = () => {
+const fetchData = () => {
     let url = "https://ghibliapi.herokuapp.com/films"
     fetch(url)
         .then(response => {
             console.log(response)
             return response.json()
         })
-        .then(film  => {
-            console.log(film)
-            displaySelectedFilm(film)
+        .then(allData => {
+            console.log(allData)
+            buildSelect(allData)
+            let select = document.querySelector('select')
+            select.addEventListener("change", () => {
+                console.log(titleBox.value)
+                displaySelectedFilm(allData, titleBox.value)
+            })
+            let review = document.querySelector('form')
+            review.addEventListener('submit', (event) => {
+                reviewSection(event)
+            })
         })
         .catch(error => {
             console.log("there is an error", error)
@@ -37,73 +32,47 @@ const selectTitle = () => {
     //console.log("is it the right url?", url)
 }
 
-const displaySelectedFilm = (film) => {
-    let selectBox = document.querySelector(".title-box")
-    let firstDiv = document.querySelector(".select")
-    //let newSelectBox = document.createElement("select")
-    let infoSection = document.querySelector(".info-section")
-    let newInfoSection = document.createElement("div")
-
-    for (let i = 0; i < film.length; i++) {
+const buildSelect = (allData) => {
+    let selectBox = document.querySelector("#titleBox")
+    for (let i = 0; i < allData.length; i++) {
         let filmOptions = document.createElement("option")
-        filmOptions.innerText = (film[i].title)
+        filmOptions.innerText = (allData[i].title)
+        filmOptions.value = i
         selectBox.appendChild(filmOptions)
-        //    let filmTitle = document.createElement("h3")
-        //    filmTitle.innerText = film[i].title
-        //    let releaseYr = document.createElement('p')
-        //    releaseYr.innerText = film[i].release_date
-        //    let filmDes = document.createElement("p")
-        //    filmDes.classList.add('description')
-        //    filmDes.innerText = film[i].description
-        //    console.log('description', filmDes)
-        //    console.log('year', releaseYr.innerText)
-        //if (filmOptions.hasAttribute(filmDes.innerText))  {
-            //let selectBox = document.querySelector(".title-box")
-            //let newSelectBox = document.createElement("select")
-            
-            // selectBox.addEventListener("click", toggleInfo)
-
-           
-            console.log(filmOptions.innerText)
-
-
-
-            let filmTitle = document.createElement("h3")
-            filmTitle.innerText = film[i].title
-            let releaseYr = document.createElement('p')
-            releaseYr.innerText = film[i].release_date
-            let filmDes = document.createElement("p")
-            filmDes.classList.add('description')
-            filmDes.innerText = film[i].description
-            console.log('description', filmDes)
-            console.log('year', releaseYr.innerText)
-
-
-            
-            newInfoSection.appendChild(filmTitle)
-            newInfoSection.appendChild(releaseYr)
-            newInfoSection.appendChild(filmDes)
-            console.log(firstDiv.nextElementSibling);
-            //console.log('')
-        //} else {
-            //firstDiv.html
-        //}
+        console.log("see film!!!!", filmOptions.value)
     }
 
-    infoSection.parentNode.replaceChild(newInfoSection, infoSection)
 }
 
-const reviewSection = () => {
+const displaySelectedFilm = (allData, index) => {
+    let infoSection = document.querySelector("#infoSection")
+    
+    while (infoSection.childNodes[0]) {
+        infoSection.removeChild(infoSection.firstChild)
+    }
+    let filmTitle = document.createElement("h3")
+    filmTitle.innerText = allData[index].title
+    let releaseYr = document.createElement('p')
+    releaseYr.innerText = allData[index].release_date
+    let filmDes = document.createElement("p")
+    filmDes.classList.add('description')
+    filmDes.innerText = allData[index].description
+    console.log('description', filmDes)
+    console.log('year', releaseYr.innerText)
+    infoSection.appendChild(filmTitle)
+    infoSection.appendChild(releaseYr)
+    infoSection.appendChild(filmDes)
+}
 
+const reviewSection = (event) => {
+    event.preventDefault()
     let parentNode = document.querySelector("ul")
-    let childNode = document.createElement("li").innerText
-    let form = document.querySelector("form")
-    console.log(form)
+    let childNode = document.createElement("li")
+    childNode.innerText = form.value
+    if (li.innerText !== "")
+    console.log(form.value)
     childNode.innerText = form.value
     parentNode.appendChild(childNode)
-
-
-
 }
 
 // const toggleInfo = (filmOptions) => {
