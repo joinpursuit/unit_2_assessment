@@ -38,8 +38,13 @@ h1{
 
 #words{
 width:400px;
+display:none;
 }
 
 select{
   width:200px;
+}
+
+#sub{
+  display:none;
 }
