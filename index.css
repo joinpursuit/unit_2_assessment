@@ -1,25 +1,39 @@
 body{
+  width: 70%;
   background: lavender;
-  font-family:monospace;
+  font-family:sans-serif;
   /* display:flex ;==> column */
-  align-items: center;
-  text-align: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header{
   background: skyblue;
-  width: 70%;
-  height: 150px;
-  /* Image and header text should be horizontally oriented. */
+  width: 100%;
   display: flex;
   flex-wrap: unset;
-  justify-content: inherit;
-  text-align: center;
+  justify-content: space-between;
   margin-bottom: 30px;
   padding: 10px;
+  position: relative;
+  align-items: center;
 }
 .img{
-  background: skyblue;
+  /* background: skyblue; */
   width: 70%;
   height: 150px;
+  position: relative;
+  left: 0;
+}
+#reviewText{
+  width: 400px;
+  height: 20px;
+}
+#submit{
+  background-color: skyblue;
+  border: 1px solid gray;
+  border-radius: 7px;
+  height: 25px;
+  font-weight: bold; 
 }

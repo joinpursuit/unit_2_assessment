@@ -1,31 +1,37 @@
+let allMovies; // global variable to don't have to fetch again for the selected movie
+
 document.addEventListener('DOMContentLoaded', () => {
-// console.log("dom")
-setupDroplist();
-fetchMovieList()
+
+fetchAllTitles();
+
+const droplist = document.querySelector('#droplist')
+droplist.addEventListener("change", () => {
+    let selectedTitle = droplist.value;
+    addMovieInfoToDOM(selectedTitle);
 })
-// add list to drop list
-const setupDroplist = ()=>{
-  const getMovieList = document.querySelector('#droplist')
-  getMovieList.addEventListener('click', fetchMovieList)
-  console.log( "click")
-}
 
-const fetchMovieList =()=>{
-  console.log("fetch was called")
-  fetchAllTitles();
-  // selectedTitle();
-  // fetchYear();
-  // fetchDescription();
-}
+let reviewForm = document.querySelector("#reviewForm");
+reviewForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-const fetchAllTitles=(film)=>{
+  let reviewTextInput = document.querySelector("#reviewText")
+  console.log(reviewTextInput.value)
+
+  addReviewToDOM(reviewTextInput.value)
+})
+
+})
+
+
+const fetchAllTitles=()=>{
   
-  const films =` https://ghibliapi.herokuapp.com/films`
+  const url =` https://ghibliapi.herokuapp.com/films`
   // console.log(url)
-  fetch(films)
+  fetch(url)
   .then(response => response.json())
   .then(films => {
     // console.log(films)
+    allMovies = films;
     for (let i = 0; i< films.length; i++) {
      let titleFilms = films[i].title
     let options = document.createElement('option');
@@ -33,26 +39,50 @@ const fetchAllTitles=(film)=>{
     options.innerText = titleFilms;
     let select =document.querySelector('#droplist')
     select.appendChild(options)
-   
     }
-  })
-  const selectedTitle=(select)=>{
-  
-    let option;
-      for (let i = 0; i< titleFilms.length; i++) {
-       option = select[i]
-      if(option.selected === true){
-        return option
-        console.log(option)
-      }
-      }
-      return option
+   })
+ }
 
-    }
+ const addMovieInfoToDOM = (title) => {
+   let titleMovie = document.querySelector("#titleMovie");
+   let year = document.querySelector("#year");
+   let description = document.querySelector("#description");
 
+   if (title === "" && !title) {
+    titleMovie.innerText = "";
+    year.innerText = "";
+    description.innerText = "";
+   } else {
+     for (let i = 0; i < allMovies.length; i++) {
+       if (title === allMovies[i].title) {
+         titleMovie.innerText = title;
+         year.innerText = allMovies[i].release_date;
+         description.innerText = allMovies[i].description;
+       }
+     }
+   }
 
-  // .catch(err => {
-  //   console.log("err: ", err);
+ }
+
+ const addReviewToDOM = (review) => {
+   let title = document.querySelector("#titleMovie").innerText;
+
+   if (title !== "") {
+    let ourUl = document.querySelector("#addReview");
+
+    let ourLi = document.createElement("li");
+ 
+    let boldText = document.createElement("strong");
+    boldText.innerText = title + ": ";
+    ourLi.appendChild(boldText);
+ 
+    let span = document.createElement("span");
+    span.innerText = review;
+    ourLi.appendChild(span);
+ 
+    ourUl.appendChild(ourLi);
+   }
+
  }
 
 
