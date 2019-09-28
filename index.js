@@ -8,14 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let select = document.querySelector("select")
   select.addEventListener("change", (e) => {
+  
+    let list = document.querySelector("ul");
+ 
     let words = document.querySelector("#words")
     let submit = document.querySelector("#sub")
     if (!e.target.value){
+      list.innerHTML = ""
       words.style.display = "none"
       submit.style.display = "none"
     }else{
+      list.innerHTML = ""
       words.style.display = "inline"
       submit.style.display = "inline"
+      let i = 0;
+      while(i < listOfReviews[e.target.value].length){
+      list.appendChild(listOfReviews[e.target.value][i])
+      i++;}
     }
     words.value = ""
     let info = document.querySelector("#info")
@@ -53,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 let arrjson = [null];
+let listOfReviews = {}
 
 function getFilms(film) {
   let select = document.querySelector("select")
@@ -61,6 +71,7 @@ function getFilms(film) {
     option.innerText = i.title;
     select.appendChild(option)
     arrjson.push(i.id)
+    listOfReviews[i.title] = [];
   }
 }
 
@@ -78,7 +89,12 @@ function postReview() {
   review.appendChild(text);
 
   if (t.innerText && words.value) {
-    list.appendChild(review)
+    listOfReviews[t.innerText].push(review);
+    let i = 0;
+    while(i < listOfReviews[t.innerText].length){
+    list.appendChild(listOfReviews[t.innerText][i])
+    i++;
+    }
   }
   words.value = ""
 }
