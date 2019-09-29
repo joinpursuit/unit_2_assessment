@@ -4,7 +4,6 @@ let opt;
 let ghibliArray;
 let movieReviewArr = [];
 
-
 document.addEventListener('DOMContentLoaded', () => {
     getMovieTitle()
     let form = document.querySelector('form')
@@ -32,17 +31,11 @@ const submitReview = (event) => {
     opt = getSelectedMovie(select).text.bold()
     let list = document.querySelector('ul')
     let noInput = document.querySelector('#error')
-    let textInput = document.querySelector('#textField').value
+    textInput = document.querySelector('#textField').value
     let newReview = document.createElement('li')
-    if (textInput === '') {
-        noInput.innerText = `Please enter a valid review`
-        newReview.innerText = ''
-    } else {
-        noInput.innerText = ''
-        newReview.innerHTML = ` ${opt}: ${textInput}`
-        list.appendChild(newReview)
-    }
-    document.querySelector('#textField').value = ''
+    newReview.innerHTML = ` ${opt}: ${textInput}`
+    list.appendChild(newReview)
+    // textInput.innerText = '';
 }
 
 const disableButton = () => {
@@ -70,11 +63,11 @@ const setupSelectListener = () => {
     emptySubContainer()
     opt = getSelectedMovie(select);
     console.log(opt);
-    for (let i = 0; i < ghibliArray.length; i++) {
-        if (opt.value === ghibliArray[i].id) {
-            creatingCard(ghibliArray[i])
+    ghibliArray.filter(el => {
+        if (opt.value === el.id) {
+            return creatingCard(el)
         }
-    }
+    })
 }
 
 const getContainer = () => document.querySelector('#container')
@@ -84,16 +77,13 @@ const emptySubContainer = () => {
     container.textContent = ''
 }
 
-const creatingCard = (ghibliArray) => {
+const creatingCard = (elem) => {
     container = getContainer();
-    const movieContainer = document.createElement('div')
-    movieContainer.id = 'movieTicket'
     movie = document.createElement('h3')
     let year = document.createElement('p')
     let blurb = document.createElement('p')
-    movie.innerText = ghibliArray.title
-    year.innerText = ghibliArray.release_date
-    blurb.innerText = ghibliArray.description
-    movieContainer.append(movie, year, blurb)
-    container.appendChild(movieContainer)
+    movie.innerText = elem.title
+    year.innerText = elem.release_date
+    blurb.innerText = elem.description
+    container.append(movie, year, blurb)
 }

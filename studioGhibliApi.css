@@ -33,8 +33,9 @@ img {
 }
 
 #container {
+    width: 60%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: center;
 }
