@@ -1,5 +1,3 @@
-###### [Hello world](https://joseph-p-pasaoa.github.io/unit_2_assessment/)
-
 # Movie App
 
 Create an app using the [Studio Ghibli API](https://ghibliapi.herokuapp.com/#) that allows users to view and review each movie.
