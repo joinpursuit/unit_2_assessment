@@ -2,7 +2,8 @@ let container;
 let select;
 let opt;
 let ghibliArray;
-
+let movieReviewArr = [];
+let list = document.querySelector('ul')
 
 document.addEventListener('DOMContentLoaded', () => {
     getMovieTitle()
@@ -10,15 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         submitReview(event);
     })
+
+
 })
+
+function test() {
+    let button = document.querySelector('button')
+    opt = getSelectedMovie(select);
+    if (opt.value === 'null') {
+        button.disabled = true
+    }
+}
 const getApiData = async () => {
-    const movies = await axios.get('https://ghibliapi.herokuapp.com/films')
-    console.log(movies.data);
-    return movies.data
+    const {
+        data
+    } = await axios.get('https://ghibliapi.herokuapp.com/films')
+    console.log(data);
+    return data
 }
 
 const submitReview = (event) => {
     event.preventDefault()
+    test()
     opt = getSelectedMovie(select).text.bold()
     let list = document.querySelector('ul')
     let noInput = document.querySelector('#error')
@@ -35,7 +49,7 @@ const submitReview = (event) => {
     document.querySelector('#textField').value = ''
 }
 
-const pullFromHtml = async () => {
+const pullFromHtml = () => {
     return select = document.querySelector('select')
 }
 
@@ -78,7 +92,7 @@ const getMovieInfo = async (param) => {
 const getContainer = () => {
     return container = document.querySelector('#container')
 }
-const replaceSelection = async () => {
+const replaceSelection = () => {
     container = getContainer();
     container.innerHTML = ''
 }
@@ -90,14 +104,9 @@ const creatingCard = async (ghibliArray) => {
     movie = document.createElement('h3')
     let year = document.createElement('p')
     let blurb = document.createElement('p')
-
-    let movieContainerArr = [movie, year, blurb]
     movie.innerText = ghibliArray.title
     year.innerText = ghibliArray.release_date
     blurb.innerText = ghibliArray.description
-
-    for (let i = 0; i < movieContainerArr.length; i++) {
-        movieContainer.appendChild(movieContainerArr[i])
-    }
+    movieContainer.append(movie, year, blurb)
     container.appendChild(movieContainer)
 }
