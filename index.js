@@ -44,11 +44,22 @@ const displayMovieInfo = () => {
   })
 }
 
+const displayRandomMovie = () => {
+  let info = document.getElementById('movie')
+  info.innerText = ''
+
+  let list = document.querySelector('select')
+  list.options.selectedIndex = Math.ceil(Math.random() * 20)
+
+  displayMovieInfo()
+}
+
 const addReview = () => {
   let title = document.querySelector('h3')
   let reviews = document.querySelector('ul')
   let review = document.createElement('li')
   let input = document.createElement('p')
+
   review.innerText = title.innerText + ': '
   review.style.fontWeight = 'bold'
 
@@ -56,10 +67,26 @@ const addReview = () => {
 
   let textbox = document.getElementById('textbox')
   let span = document.createElement('span')
+  let reviewer = document.getElementById('reviewer')
+  let span2 = document.createElement('span')
+
   span.innerText = textbox.value
   span.style.fontWeight = 'normal'
 
   review.appendChild(span)
 
+  span2.innerText = ' by ' + reviewer.value
+  span2.style.fontStyle = 'italic'
+
+  span.appendChild(span2)
+
+  let init = {
+    method: 'POST',
+    body: title.innerText + ': ' + textbox.value + ' by ' + reviewer.value
+  }
+
+  fetch('https://github.com/Pursuit-Core-6-2/film-reviews-api', init)
+
   textbox.value = ''
+  reviewer.value = ''
 }

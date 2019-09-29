@@ -14,9 +14,11 @@
     <select onchange='displayMovieInfo()'>
       <option>movie</option>
     </select>
+    <button id='random' onclick='displayRandomMovie()'>random</button>
     <div id="movie"></div>
     <form onsubmit="addReview();return false">
-      <input id="textbox" type="text"></input>
+      <input id="textbox" type="text" placeholder='type review'></input>
+      <input id='reviewer' type='text' placeholder='type reviewer'></input>
       <input type="submit"></input>
     </form>
     <ul></ul>
