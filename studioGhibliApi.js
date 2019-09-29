@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     select.addEventListener('change', () => {
         setupSelectListener()
     })
-    displayForm()
+    toggleForm()
 })
 
 const getApiData = async () => {
@@ -38,7 +38,7 @@ const submitReview = (event) => {
     list.appendChild(newReview)
 }
 
-const displayForm = () => {
+const toggleForm = () => {
     opt = getSelectedMovie(select);
     const form = document.querySelector('form')
     opt.value === 'null' ? form.style.display = 'none' : form.style.display = 'block'
@@ -62,7 +62,7 @@ const setupSelectListener = () => {
     opt = getSelectedMovie(select);
     console.log(opt);
     ghibliArray.filter(el => opt.value === el.id ? creatingCard(el) : console.log('hello'));
-    displayForm()
+    toggleForm()
 }
 
 const getContainer = () => document.querySelector('#container')
