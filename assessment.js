@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   text();
 });
 
+
+
 const pickAMovie = () => {
   console.log("starting");
 
@@ -16,10 +18,11 @@ const pickAMovie = () => {
     })
     .then(data => {
       console.log(data);
-
+  placeHolder(data)
       for (let i = 0; i < data.length; i++) {
         movieList(data[i].title);
       }
+
     })
 
     .catch(err => {
@@ -27,8 +30,18 @@ const pickAMovie = () => {
     });
 };
 
+
+const placeHolder= (data)=>{
+  let holderOption = document.createElement("option")
+  holderOption.innerText= "Pick a Movie"
+  holderOption.id = "placeHolder"
+    document.getElementsByClassName("movie")[0].appendChild(holderOption);
+}
+
+
+
 const movieList = list => {
-  let newOption = document.createElement("option");
+  let newOption = document.createElement("option")
   newOption.value = list;
   newOption.id = list;
   newOption.innerText = list;
@@ -37,7 +50,9 @@ const movieList = list => {
   document.getElementsByClassName("movie")[0].appendChild(newOption);
 };
 
-const setupFilmSelector = (film) => {
+
+
+const setupFilmSelector = film => {
   fetch("https://ghibliapi.herokuapp.com/films")
     .then(response => {
       return response.json();
@@ -47,10 +62,11 @@ const setupFilmSelector = (film) => {
 
       filmInfo(data);
     });
+};
 
-}
 
-const filmInfo = (data) => {
+
+const filmInfo = data => {
   const select = document.querySelector("#pickAMovie");
 
   select.addEventListener("change", event => {
@@ -61,32 +77,57 @@ const filmInfo = (data) => {
     let pickTitle = event.target.selectedOptions[0].value;
     // console.log(pickTitle)
     // let pickDescript = event.target.selectedOptions[0].value.
+    let h3 = document.querySelector("h3");
+    if (!h3) {
+      let filmTitle = document.createElement("h3");
+      filmTitle.innerText = pickTitle;
+      filmTitle.id = "film_title";
+      console.log(filmTitle);
 
-    let filmTitle = document.createElement("h3");
-    filmTitle.innerText = pickTitle;
-    filmTitle.id = "film_title";
-    console.log(filmTitle);
+      console.log(filmTitle);
+      document.getElementsByClassName("info")[0].appendChild(filmTitle);
 
-    console.log(filmTitle);
-    document.getElementsByClassName("info")[0].appendChild(filmTitle);
+      for (let i = 0; i < data.length; i++) {
+        let releaseYear = document.createElement("p");
+        releaseYear.id = "release_Year";
+        if (filmTitle.innerText === data[i].title) {
+          releaseYear.innerText = data[i].release_date;
+          document.getElementsByClassName("info")[0].appendChild(releaseYear);
+        }
+      }
 
-    for (let i = 0; i < data.length; i++) {
-      let releaseYear = document.createElement("p");
-      if (filmTitle.innerText === data[i].title)
-        releaseYear.innerText = data[i].release_date;
-      document.getElementsByClassName("info")[0].appendChild(releaseYear);
-    }
+      for (let i = 0; i < data.length; i++) {
+        let description = document.createElement("p");
+        description.id = "film_description";
+        if (filmTitle.innerText === data[i].title) {
+          description.innerText = data[i].description;
+          document.getElementsByClassName("info")[0].appendChild(description);
+        }
+      }
+    } else {
+      let filmTitle = document.querySelector("#film_title");
+      filmTitle.innerText = pickTitle;
+      document.getElementsByClassName("info")[0].appendChild(filmTitle);
 
-    for (let i = 0; i < data.length; i++) {
-      let description = document.createElement("p");
-      if (filmTitle.innerText === data[i].title) {
-        description.innerText = data[i].description;
-        document.getElementsByClassName("info")[0].appendChild(description);
+      for (let i = 0; i < data.length; i++) {
+        let releaseYear = document.querySelector("#release_Year");
+        if (filmTitle.innerText === data[i].title) {
+          releaseYear.innerText = data[i].release_date;
+          document.getElementsByClassName("info")[0].appendChild(releaseYear);
+        }
+      }
 
+      for (let i = 0; i < data.length; i++) {
+        let description = document.querySelector("#film_description");
+        if (filmTitle.innerText === data[i].title) {
+          description.innerText = data[i].description;
+          document.getElementsByClassName("info")[0].appendChild(description);
+        }
       }
     }
   });
 };
+
 
 const text = () => {
   let form = document.querySelector("#form");
@@ -95,9 +136,9 @@ const text = () => {
   let movies = document.querySelector(".movie");
   let review = document.querySelector("#review");
 
-
   form.addEventListener("submit", () => {
     event.preventDefault();
+
     let empty = "";
     if (empty !== input.value) {
       console.log(input.value);
