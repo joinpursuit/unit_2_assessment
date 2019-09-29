@@ -1,14 +1,14 @@
 @media only screen and (max-width: 600px) {
-    body {
-        width:100%;
-      
+    #header{
+        
     }
-  }
+}
 
 body{
     background-color: lavender;
     font-family: monospace;
-    margin-left: 22%;
+    width:100%;
+    margin: 0 auto;
 }
 
 #header{
@@ -17,10 +17,11 @@ body{
     grid-template-columns: repeat(3, 1fr);
     width: 70%; 
     height: 150px;
-    margin-bottom: 30px;
     padding:10px;
     text-align: center;
-
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
 }
 
 #banner{
@@ -43,6 +44,7 @@ body{
     width: 60%;
     grid-template-columns: 1fr;
     justify-content: left;
+    margin: 0 auto;
 }
 
 select{
