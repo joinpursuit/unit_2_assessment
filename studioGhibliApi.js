@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     select.addEventListener('change', () => {
         setupSelectListener()
     })
-
+    displayForm()
 })
 
 const getApiData = async () => {
@@ -27,23 +27,21 @@ const getApiData = async () => {
 
 const submitReview = (event) => {
     event.preventDefault()
-    disableButton()
-    opt = getSelectedMovie(select).text.bold()
+    opt = getSelectedMovie(select).text
     let list = document.querySelector('ul')
-    let noInput = document.querySelector('#error')
     textInput = document.querySelector('#textField').value
     let newReview = document.createElement('li')
-    newReview.innerHTML = ` ${opt}: ${textInput}`
+    const text = document.createTextNode(textInput)
+    const title = document.createElement('strong')
+    title.innerText = `${opt} : `
+    newReview.append(title, text)
     list.appendChild(newReview)
-    // textInput.innerText = '';
 }
 
-const disableButton = () => {
-    let button = document.querySelector('button')
+const displayForm = () => {
     opt = getSelectedMovie(select);
-    if (opt.value === 'null') {
-        button.disabled = true
-    }
+    const form = document.querySelector('form')
+    opt.value === 'null' ? form.style.display = 'none' : form.style.display = 'block'
 }
 
 const getMovieTitle = async () => {
@@ -63,11 +61,8 @@ const setupSelectListener = () => {
     emptySubContainer()
     opt = getSelectedMovie(select);
     console.log(opt);
-    ghibliArray.filter(el => {
-        if (opt.value === el.id) {
-            return creatingCard(el)
-        }
-    })
+    ghibliArray.filter(el => opt.value === el.id ? creatingCard(el) : console.log('hello'));
+    displayForm()
 }
 
 const getContainer = () => document.querySelector('#container')
