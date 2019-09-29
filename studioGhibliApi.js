@@ -36,6 +36,7 @@ const submitReview = (event) => {
     title.innerText = `${opt} : `
     newReview.append(title, text)
     list.appendChild(newReview)
+    document.querySelector('#textField').value = ''
 }
 
 const toggleForm = () => {
@@ -61,7 +62,11 @@ const setupSelectListener = () => {
     emptySubContainer()
     opt = getSelectedMovie(select);
     console.log(opt);
-    ghibliArray.filter(el => opt.value === el.id ? creatingCard(el) : console.log('hello'));
+    ghibliArray.filter(el => {
+        if (opt.value === el.id) {
+            creatingCard(el)
+        }
+    })
     toggleForm()
 }
 
