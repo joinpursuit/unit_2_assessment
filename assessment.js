@@ -1,32 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let form = document.querySelector("#form");
-  let movieButton = document.querySelector("#submit");
-  let input = document.querySelector("#textbox");
-  let movies = document.querySelector(".movie");
-  let review = document.querySelector("#review");
-
-  movies.addEventListener("click", () => {
-    pickAMovie();
-// infoDisplay()
-  });
-
   console.log("DOM Loaded");
-
-  form.addEventListener("submit", () => {
-    event.preventDefault();
-
-    let empty = "";
-    if (empty !== input.value) {
-      console.log(input.value);
-      let review = document.querySelector("#review");
-      let title = document.createElement("li");
-      title.innerText = input.value;
-      console.log(title.innerText);
-      document.getElementsByClassName("review")[0].appendChild(title);
-    }
-  });
+  pickAMovie();
+  setupFilmSelector();
+  text();
 });
-
 
 const pickAMovie = () => {
   console.log("starting");
@@ -42,44 +19,15 @@ const pickAMovie = () => {
 
       for (let i = 0; i < data.length; i++) {
         movieList(data[i].title);
-  }
-
-
-
-      let title = document.createElement("h3");
-      document.getElementsByClassName("info")[0].appendChild(title);
-
-
-      let releaseYear = document.createElement("p");
-      document.getElementsByClassName("info")[0].appendChild(releaseYear);
-
-      let description = document.createElement("p");
-      document.getElementsByClassName("info")[0].appendChild(description);
-
-
-      for (let j = 0; j < data.length; j++) {
-
-
-        if (document.getElementById(`${data[j].title}`).value ===`${data[j].title}`) {
-          console.log(`${data[j].title}`);
-
-          title.innerText = data[j].title;
-          releaseYear.innerText = data[j].release_date;
-         description.innerText = data[j].description;
-
-        }
       }
+    })
 
-})
-
-
-.catch((err)=>{
-  console.log("There was an error", err)
-})
-}
+    .catch(err => {
+      console.log("There was an error", err);
+    });
+};
 
 const movieList = list => {
-  console.log(list);
   let newOption = document.createElement("option");
   newOption.value = list;
   newOption.id = list;
@@ -87,59 +35,79 @@ const movieList = list => {
   newOption.className = "allMovies";
 
   document.getElementsByClassName("movie")[0].appendChild(newOption);
-
-
-
 };
 
+const setupFilmSelector = (film) => {
+  fetch("https://ghibliapi.herokuapp.com/films")
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+
+      filmInfo(data);
+    });
+
+}
+
+const filmInfo = (data) => {
+  const select = document.querySelector("#pickAMovie");
+
+  select.addEventListener("change", event => {
+    // console.log('select was value changed:' event.target.value)
+
+    console.dir(event.target.selectedOptions);
+    console.dir(event.target.selectedOptions[0].value);
+    let pickTitle = event.target.selectedOptions[0].value;
+    // console.log(pickTitle)
+    // let pickDescript = event.target.selectedOptions[0].value.
+
+    let filmTitle = document.createElement("h3");
+    filmTitle.innerText = pickTitle;
+    filmTitle.id = "film_title";
+    console.log(filmTitle);
+
+    console.log(filmTitle);
+    document.getElementsByClassName("info")[0].appendChild(filmTitle);
+
+    for (let i = 0; i < data.length; i++) {
+      let releaseYear = document.createElement("p");
+      if (filmTitle.innerText === data[i].title)
+        releaseYear.innerText = data[i].release_date;
+      document.getElementsByClassName("info")[0].appendChild(releaseYear);
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      let description = document.createElement("p");
+      if (filmTitle.innerText === data[i].title) {
+        description.innerText = data[i].description;
+        document.getElementsByClassName("info")[0].appendChild(description);
+
+      }
+    }
+  });
+};
+
+const text = () => {
+  let form = document.querySelector("#form");
+  let movieButton = document.querySelector("#submit");
+  let input = document.querySelector("#textbox");
+  let movies = document.querySelector(".movie");
+  let review = document.querySelector("#review");
 
 
-
-
-// const infoDisplay = () => {
-//     fetch("https://ghibliapi.herokuapp.com/films")
-//       .then(response2 => {
-//         return response2.json();
-//
-//       })
-//       .then (data2 => {
-//         console.log(data2);
-//
-// let view = document.getElementById("pickAMovie")
-// let user = view.options[view.selectedIndex].text
-// console.log(user)
-// info()
-//  info(data[j].title)
-// info(innerText = data[j].release_date)
-// info(description.innerText = data[j].description)
-//
-//     })
-//
-// }
-//
-//
-//
-//
-//
-// const info = (data) =>{
-//
-//   let view = document.getElementById("pickAMovie")
-//   let user = view.options[view.selectedIndex].text
-//
-//
-//         let title = document.createElement("h3");
-//
-//         title.innerText = data
-//         document.getElementsByClassName("info")[0].appendChild(title);
-//
-//
-//         let releaseYear = document.createElement("p");
-//         releaseYear.innerText = data
-//         document.getElementsByClassName("info")[0].appendChild(releaseYear);
-//
-//         let description = document.createElement("p");
-//         description.innerText= data
-//         document.getElementsByClassName("info")[0].appendChild(description);
-//
-//
-// }
+  form.addEventListener("submit", () => {
+    event.preventDefault();
+    let empty = "";
+    if (empty !== input.value) {
+      console.log(input.value);
+      let review = document.querySelector("#review");
+      let title = document.createElement("li");
+      let filmTitle = document.querySelector("#film_title");
+      console.log(filmTitle);
+      let fimTitlText = filmTitle.innerText;
+      title.innerText = fimTitlText + ": " + input.value;
+      document.getElementsByClassName("review")[0].appendChild(title);
+    }
+  });
+};
