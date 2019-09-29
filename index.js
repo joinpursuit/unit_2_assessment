@@ -59,7 +59,7 @@ const clearStage = (location) => {
 
 
 
-/* GETS API DATA */
+/* GETS & PROCESSES API DATA */
 const getGData = async () => {
   try {
     let response = await axios.get('https://ghibliapi.herokuapp.com/films');

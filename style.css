@@ -253,7 +253,7 @@ div#footer {
     padding-bottom: 7px;
   }
 
-  form#reviewform > input[type="text"] {
+  form#reviewform input#newreview {
     width: 95%;
   }
 
