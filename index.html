@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+   <meta name="author" content="Joseph P. Pasaoa" />
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <title>Unit 2 Assessment: Studio Ghibli Film Reviews App | Joseph P. Pasaoa</title>
+   <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
+   <script src="./index.js" type="text/javascript"></script>
+   <script src="./sampleReviews.js" type="text/javascript"></script>
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+   <link href="./style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+   <div id="base-grid">
+
+      <div id="header">
+         <h1>Ghibli Review App</h1>
+         <img src="./logoSG.png" alt="Studio Ghibli Logo" />
+      </div>
+
+      <div id="mainstage">
+         <div id="selectrow">
+            <h4>Works: </h4>
+            <select id="filmselect">
+               <option disabled selected value> -- choose a film -- </option>
+            </select>
+         </div>
+         <div id="currentfilmstage"></div>
+            <!-- SAMPLE CURRENT DATA for CODING REFERENCE
+            <h3>The Tale of the Princess Kaguya</h3>
+            <p id="year">2013</p>
+            <p id="description">"A bamboo cutter named Sanuki no Miyatsuko discovers a miniature girl inside a glowing bamboo shoot. 
+               Believing her to be a divine presence, he and his wife decide to raise her as their own, calling her 'Princess'."
+            </p> -->
+         <h4>Submit a review</h4>
+         <form id="reviewform">
+            <input form="reviewform" type="text" id="newreview" placeholder="What did you think?" autocomplete="off" />
+            <input form="reviewform" type="hidden" id="currentFilmID" value="" />
+            <div id="subtext">
+               <input form="reviewform" type="submit" value="Submit!" />
+               <div id="formerrors"></div>
+            </div>
+         </form>
+         <h4>Reviews</h4>
+         <ul id="reviewslist"></ul>
+            <!-- SAMPLE LI BLOCK for CODING REFERENCE
+            <li>
+               <strong>can do no wrong ✔︎</strong> 
+               FAV. MOVEEE. EVAAA.
+            </li> -->
+      </div>
+
+      <div id="footer">
+         Copyright © 2019 Joseph P. Pasaoa. All rights reserved. 
+         Special thanks to the <a href="https://ghibliapi.herokuapp.com/" target="_blank">Studio Ghibli API</a> from which this site utilizes data. 
+      </div>
+
+   </div>
+
+</body>
+</html>
