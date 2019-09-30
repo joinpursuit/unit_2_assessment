@@ -16,8 +16,10 @@ reviewForm.addEventListener("submit", (event) => {
 
   let reviewTextInput = document.querySelector("#reviewText")
   console.log(reviewTextInput.value)
-
-  addReviewToDOM(reviewTextInput.value)
+  if (reviewTextInput.value !== "") {
+    addReviewToDOM(reviewTextInput.value)
+    reviewTextInput.value = "";
+  }
 })
 
 })
@@ -32,13 +34,13 @@ const fetchAllTitles=()=>{
   .then(films => {
     // console.log(films)
     allMovies = films;
-    for (let i = 0; i< films.length; i++) {
-     let titleFilms = films[i].title
-    let options = document.createElement('option');
-    options.value = titleFilms;
-    options.innerText = titleFilms;
     let select =document.querySelector('#droplist')
-    select.appendChild(options)
+    for (let i = 0; i< films.length; i++) {
+      let titleFilms = films[i].title
+      let options = document.createElement('option');
+      options.value = titleFilms;
+      options.innerText = titleFilms;
+      select.appendChild(options)
     }
    })
  }

@@ -21,7 +21,6 @@ body{
 }
 .img{
   /* background: skyblue; */
-  width: 70%;
   height: 150px;
   position: relative;
   left: 0;
@@ -36,4 +35,15 @@ body{
   border-radius: 7px;
   height: 25px;
   font-weight: bold; 
+}
+@media screen and (max-width: 850px) {
+  .header{
+    flex-flow: column;
+  }
+  #reviewText{
+    width: 100%;
+  }
+  /* #droplist{
+    width: 70%;
+  } */
 }
