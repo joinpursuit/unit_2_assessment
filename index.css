@@ -1,0 +1,49 @@
+body{
+  width: 70%;
+  background: lavender;
+  font-family:sans-serif;
+  /* display:flex ;==> column */
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header{
+  background: skyblue;
+  width: 100%;
+  display: flex;
+  flex-wrap: unset;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 10px;
+  position: relative;
+  align-items: center;
+}
+.img{
+  /* background: skyblue; */
+  height: 150px;
+  position: relative;
+  left: 0;
+}
+#reviewText{
+  width: 400px;
+  height: 20px;
+}
+#submit{
+  background-color: skyblue;
+  border: 1px solid gray;
+  border-radius: 7px;
+  height: 25px;
+  font-weight: bold; 
+}
+@media screen and (max-width: 850px) {
+  .header{
+    flex-flow: column;
+  }
+  #reviewText{
+    width: 100%;
+  }
+  /* #droplist{
+    width: 70%;
+  } */
+}
