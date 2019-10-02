@@ -18,28 +18,31 @@
 
     </div>
 
-    <div id="selectMovieBox">
-        <select id="mySelect">
-            <option></option>
-        </select>
-    </div>
+    <div id="mainArea">
+        <div id="selectMovieBox">
+            <select id="mySelect">
+                <option>---Select a movie----</option>
+            </select>
+        </div>
 
-    <div id="movieInfoBar">
-        <h3 id="films"></h3>
-        <p id="movieYear"></p>
-        <p id="movieDescription"></p>
-    </div>
+        <div id="movieInfoBar">
+            <h3 id="films"></h3>
+            <p id="movieYear"></p>
+            <p id="movieDescription"></p>
+        </div>
 
-    <div id="reviewSelection">
-        <form>
-            <input type="text">
-            <input type="submit" value="Submit Review">
-
-    </div>
-    <ul id="listOfMovieReviews">
-        <ul>
+        <hr>
+        <div id="reviewSelection">
+            <form>
+                <input id="writeCom" type="text" placeholder="text">
+                <input id="submit" type="submit" value="Submit Review">
             </form>
-            </div>
+            <hr>
+            <ul id="listOfMovieReviews">
+            </ul>
+        </div>
+    </div>
+
 
 </body>
 

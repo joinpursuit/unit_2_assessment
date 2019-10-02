@@ -1,15 +1,17 @@
 body {
-    display: grid;
     background-color: lavender;
     margin: auto;
+    height: 100%;
+    width: 100%;
+    font-family: Monospace;
 
 }
 
 img,
 #mainHeader {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 50% 50%;
-    width: 70%;
+    /* width: 70%; */
     Height: 150px;
     position: bottom right;
 
@@ -20,17 +22,30 @@ img,
     display: grid;
     font-weight: bold;
     Height: 150px;
+    width: 70%;
     background-color: skyblue;
-    grid-area: header;
-
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 10px;
 }
 
 #mainHeader h1 {
-    margin: 30px;
-    padding: 10px;
-    font-size: 20px;
-    position: left;
 
+    /* font-size: 20px; */
+    position: relative;
+    text-align: right;
+    top: 15%
+}
+
+#mainArea {
+    width: 60%;
+    margin: 30px auto;
+}
+
+#writeCom {
+    width: 400px;
 }
 
 #mySelect {
