@@ -15,6 +15,7 @@ body{
   display:flex;
   align-items: center;
   position: relative;
+  justify-content: space-between;
 }
 
 img{
@@ -23,9 +24,10 @@ img{
 }
 
 h1{
-  position: absolute;
+  /* position: absolute;
   right:5px;
-  top:60px; 
+  top:60px;  */
+  
   
 }
 
@@ -47,4 +49,16 @@ select{
 
 #sub{
   display:none;
+}
+button{
+  width:70px;
+}
+
+@media only screen and (max-width:843px){
+  #header{
+    flex-direction: column;   
+  }
+  img{
+    height:50%;
+  }
 }
