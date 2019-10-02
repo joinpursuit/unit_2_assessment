@@ -1,0 +1,44 @@
+body{
+    background-color: lavender;
+    /* display: grid;
+    grid-template-columns: 50%;
+    justify-content: center; */
+    /* width: 700px; */
+}
+
+.header{
+    margin: 0 auto;
+    width: 70%;
+    height: 150px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: skyblue;
+    background-size: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+#headerImg{
+    height: 100%;
+    
+
+}
+
+#headerText{
+    /* vertical-align: middle;
+    display: table-cell;
+    text-align: justify; */
+}
+
+.mainArea{
+    margin: 0 auto;
+    width: 60%;
+    justify-content: left;
+}
+
+@media only screen and (max-width: 871px){
+
+}
