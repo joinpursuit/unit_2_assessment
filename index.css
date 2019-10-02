@@ -1,0 +1,64 @@
+body{
+  font-family: monospace;
+  background-color: lavender;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+#header{
+  width:70%;
+  height:150px;
+  margin-bottom: 30px;
+  padding:10px;
+  background-color: skyblue;
+  display:flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+}
+
+img{
+  height:inherit;
+  float:left;
+}
+
+h1{
+  /* position: absolute;
+  right:5px;
+  top:60px;  */
+  
+  
+}
+
+#mainArea{
+  width:60%;
+  display:flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+#words{
+width:400px;
+display:none;
+}
+
+select{
+  width:200px;
+}
+
+#sub{
+  display:none;
+}
+button{
+  width:70px;
+}
+
+@media only screen and (max-width:843px){
+  #header{
+    flex-direction: column;   
+  }
+  img{
+    height:50%;
+  }
+}
