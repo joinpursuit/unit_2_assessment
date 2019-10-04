@@ -1,0 +1,65 @@
+body {
+    font-family: monospace;
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center
+}
+
+img {
+    width: 70%;
+    height: 150px;
+}
+
+#headingContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #85cee9;
+    align-items: center;
+}
+
+.mainData {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#textField {
+    width: 400px;
+    position: relative;
+}
+
+#submit {
+    height: 20px;
+    border-radius: 5%;
+    border: 1px solid black;
+}
+
+select {
+    width: 20%;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 100%
+    }
+
+    #headingContainer {
+        display: inline-block;
+        align-items: center;
+    }
+
+    img {
+        height: 30%;
+    }
+
+    #textField {
+        width: 50%;
+    }
+
+}
