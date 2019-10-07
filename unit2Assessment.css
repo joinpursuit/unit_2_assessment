@@ -1,5 +1,6 @@
 body {
   align-content: center;
+  justify-content: center;
   background-color: lavender;
   display: grid;
   font-family: monospace;
@@ -7,11 +8,8 @@ body {
   grid-template-rows: 1fr 2fr 1fr;
 }
 
-form {
-  /* display: none; */
-}
-
 header {
+
   background-color: skyblue;
   grid-column: 1 / 3;
   height: 150px;
@@ -26,24 +24,19 @@ main {
   grid-row: 2 / 3;
 }
 
-#firstOption {
-
-}
-
 #ghibliLogo {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  height: inherit;
+  /* height: inherit; */
 }
 
 #pageHeader {
-  float: right; //this is not responsive and won't stay to right when screen changes
+
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-}
-
-#selectedMovieSection {
-
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #userReview {
