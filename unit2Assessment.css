@@ -1,0 +1,44 @@
+body {
+  align-content: center;
+  justify-content: center;
+  background-color: lavender;
+  display: grid;
+  font-family: monospace;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+header {
+
+  background-color: skyblue;
+  grid-column: 1 / 3;
+  height: 150px;
+  margin-bottom: 30px;
+  padding: 10px 10px 10px 10px;
+  width: 70%;
+}
+
+main {
+  /* width: 60%; */
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+#ghibliLogo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  /* height: inherit; */
+}
+
+#pageHeader {
+
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#userReview {
+  width: 400px;
+}

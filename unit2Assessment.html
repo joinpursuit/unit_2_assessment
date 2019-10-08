@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+  <html>
+
+    <head>
+
+      <link rel="stylesheet" href="unit2assessment.css">
+      <script src="unit2assessment.js" type="text/javascript"></script>
+      <title>Ghibli Reviews</title>
+
+    </head>
+
+    <body>
+      <header>
+      <img id="ghibliLogo" src="https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg" alt="Studio Ghibli logo">
+      <h1 id="pageHeader">Ghibli Review App</h1>
+      </header>
+
+      <main>
+        <!--select box for title of each movie in API, w/a default blank option-->
+        <select id="dropdownBox">
+
+          <option id="firstDropdownOption"></option>
+
+        </select>
+
+        <div id="selectedMovieSection">
+
+        <div>
+
+        <form>
+
+          <input type="text" id="userReviewEntry" placeholder="Enter your movie review." width="400px">
+          <button id="submitButton">Submit Review</button>
+        </form>
+
+        <!--ul contains your submitted reviews-->
+        <ul id="reviewsListContainer">
+
+        </ul>
+      </main>
+
+    </body>
+
+  </html>
