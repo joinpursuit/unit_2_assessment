@@ -1,14 +1,6 @@
-
-let x = {};
-
 document.addEventListener('DOMContentLoaded', () => {
-  
-    // console.log('DOM Has Loaded')
-//    selectButton();
     fetchMovie();
-    // document.addEventListener('submit', (event) => {
-    // event.preventDefault();
-
+    formListener();
 })
 
 
@@ -81,15 +73,26 @@ const movieProperties = () => {
             })
             }
             
- 
-const movieComment = (str) => {
-    let input = document.querySelector("#review")
+ const formListener = () => {
+     let form = document.querySelector('#form')
+     form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    movieComment();
+ })
+}
+
+const movieComment = () => {
+    let movieTitle = document.querySelector("h3").innerText
+    let input = document.querySelector("#review").value
     let commentList = document.querySelector("#submittedReview")
-
-
-    input.addEventListener('submit', )
-        // let list_item = document.createElement("li")
-        // commentList.appendChild(list_item)
-        // console.log(list_item)
+    // bold(movieTitle)
     
+    let review = document.createElement("li")
+    review.innerText = `${movieTitle}: ${input}`
+
+    // console.log(review)
+    // console.log(commentList)
+
+    commentList.appendChild(review)
+
 }
