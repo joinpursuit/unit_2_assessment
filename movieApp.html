@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" href ="movieApp.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src = "movieApp.js"></script>
+        <title>Review App</title>
+    </head>
+    <body>
+        <div id = 'header'>
+            <div></div>
+            <div id = 'banner'><img src = "https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png" id="banner"></div>  
+            <div id = 'page-title'><h1>Ghibli Review App</h1></div>
+        </div>
+
+        <div id = "main-area">
+            <select id="movie-titles"></select>
+            <div id ='movie-info'>
+                <!-- h3 with movie title, p with release year & p with description of film (2) p in total -->
+            </div>
+            <form id = "user-review">
+                <input type = "text" placeholder="Place movie review here"></input>
+                <button type ='submit' >Submit Review</button>
+            </form>
+            <ul></ul>
+        </div>
+    </body>
+</html>

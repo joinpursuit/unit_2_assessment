@@ -1,0 +1,55 @@
+@media only screen and (max-width: 600px) {
+   body{
+       width:100%;
+   }
+    #header{
+        width:90%;
+    }
+}
+
+body{
+    background-color: lavender;
+    font-family: monospace;
+    width:100%;
+    margin: 0 auto;
+}
+
+#header{
+    background-color: skyblue;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%; 
+    height: 150px;
+    padding:10px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+}
+
+#banner{
+    height:150px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#page-title{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+
+input{
+    width: 400px;
+}
+
+#main-area{
+    width: 60%;
+    grid-template-columns: 1fr;
+    justify-content: left;
+    margin: 0 auto;
+}
+
+select{
+    margin-bottom: 20px;
+}
