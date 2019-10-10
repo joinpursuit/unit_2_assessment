@@ -8,8 +8,8 @@ const getMovies = () => {
     let url = "https://ghibliapi.herokuapp.com/films"
     fetch(url) //gets films from end point 
     .then(response => response.json()) //returns an array with objects as elements
-    .then(dataArr => listMoviesAsOption(dataArr)) // calls function that will add movies to drop down menu
-}
+    .then(dataArr => listMoviesAsOption(dataArr))} // calls function that will add movies to drop down menu
+
 
 
 const listMoviesAsOption = (data) => {
@@ -24,7 +24,7 @@ const listMoviesAsOption = (data) => {
        opt.value = `${movieReleaseYear} 
 
        ${movieDescription}` //sets option value equal to the movie description and release year
-       opt.innerHTML = movieTitle //sets option text to movie title 
+       opt.innerText = movieTitle //sets option text to movie title 
        sel.appendChild(opt) //adds new options to drop down menu
    }
    sel.addEventListener('change', displayMovieInfo) //event listener for when user selects a movie
@@ -35,7 +35,7 @@ const listMoviesAsOption = (data) => {
 const displayMovieInfo = (option) => {
     clearMovieInfo(); //calls function that will remove previous movie info so new movie info is displayed
     let selectedOption = sel.options[sel.selectedIndex] //set variable for specific movie the user selected
-    let title = selectedOption.innerHTML //set variable for the title of the specific movie the user selected 
+    let title = selectedOption.innerText //set variable for the title of the specific movie the user selected 
     let description = selectedOption.value // set variable for the description of the specific movie user selected
     
     let movieDiv = document.querySelector("#movieInfo") //set variable for div that will display movie info
@@ -47,9 +47,9 @@ const displayMovieInfo = (option) => {
     let newDescription = document.createElement("p") //create new paragraph that will display movie description
     newDescription.innerText = description //set paragraph innertext equal to the movies description
 
-    movieDiv.appendChild(newTitle) //add movie title to movie div 
-    movieDiv.appendChild(newDescription) //add movie description to movie div
-
+  //  movieDiv.appendChild(newTitle) //add movie title to movie div 
+  //  movieDiv.appendChild(newDescription) //add movie description to movie div
+    movieDiv.append(newTitle, newDescription)
 }
 
 const clearMovieInfo = () => { // function that will remove previous movie info when user selects a new movie 
@@ -62,7 +62,6 @@ const listenToFormEvent = () => { //function that will listen for form submit ev
  form.addEventListener("submit", (event) => {
     event.preventDefault();
     displayUserReview();
-
  })
 }
 
@@ -74,9 +73,12 @@ const displayUserReview = () => {
     let newReview = document.createElement("li") //set variable for new list item 
 
     let currentMovie = document.querySelector('h3').innerText//grabs the title of the movie that the user selected
-    newReview.innerText = `${currentMovie}: ${userInput}.` //sets inner text of list item we created to the title of the movie and what user entered into inputbox
+    let strong = document.createElement('strong')
+    let text = document.createTextNode(`: ${userInput}`)
+    strong.innerText = currentMovie 
+    newReview.append(strong, text)
     movieReviews.appendChild(newReview) // adds new list item to unordered list which will be displayed on the page
-
+    
     inputBox.value = ''; //empties input box after user has hit submit
 }
 
