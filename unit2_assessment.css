@@ -1,0 +1,63 @@
+body {
+    background-color: lavender;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    font-family: Monospace;
+
+}
+
+img,
+#mainHeader {
+    /* display: grid; */
+    grid-template-columns: 50% 50%;
+    /* width: 70%; */
+    Height: 150px;
+    position: bottom right;
+
+}
+
+
+#mainHeader {
+    display: grid;
+    font-weight: bold;
+    Height: 150px;
+    width: 70%;
+    background-color: skyblue;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+#mainHeader h1 {
+
+    /* font-size: 20px; */
+    position: relative;
+    text-align: right;
+    top: 15%
+}
+
+#mainArea {
+    width: 60%;
+    margin: 30px auto;
+}
+
+#writeCom {
+    width: 400px;
+}
+
+#mySelect {
+    width: 150px;
+}
+
+/* img #mainHeader,
+#mainHeader h1 {
+
+    ;
+} */
+
+#selectMovieBox {
+    display: flex;
+    flex-direction: row;
