@@ -1,0 +1,46 @@
+body {
+background-color: lavender;
+font-family: Monospace;
+}
+
+#header {
+    background-color: skyblue;
+    height: 150px;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+} 
+   
+#logo {
+    height: 100%;
+}
+
+#h1Tag {
+    margin-bottom: 30px;
+    padding: 10px;
+
+}
+
+#mainArea {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#inputBox {
+    width: 450px;
+}
+
+li {
+    width: 400px;
+}
+
+/* @media only screen and (max-width: 871px) {
+ .header{
+     display:block;
+     height: auto;
+     text-align: center;
+ }
+} */
