@@ -1,12 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchMovie();
     formListener();
+
 })
 
 
+
 const selectButton = (arr) => {
-    let select = document.querySelector("#filmTitle")
-    
+    let newDiv = document.querySelector('#selectButton')
+
+    let select = document.createElement("select")
+    select.id = "select"
+    newDiv.appendChild(select)
+
     
     for(let i = 0;  i <= arr.length - 1; i++) { 
 
@@ -20,6 +26,8 @@ const selectButton = (arr) => {
         
     select.appendChild(newSelect);
     }
+    select.addEventListener('change', movieProperties)
+
  }
 
 function fetchMovie() {
@@ -43,22 +51,37 @@ function fetchMovie() {
 }
 
 const movieProperties = () => {
-    let select = document.querySelector("select")
-    let container = document.querySelector("#innerContainer")
-    let movieTitle = document.querySelector("#title")
-    let movieYear = document.querySelector("#year")
-    let movieDescription = document.querySelector("#description")
-    let id = select.value
+let select = document.querySelector("#select")
 
+let container = document.createElement("div")
+container.id = "mainContainer"
+
+let innerContainer = document.createElement('div')
+innerContainer.id = "innerContainer"
+
+let movieTitle = document.createElement('h3')
+movieTitle.id = "title"
+let title = document.querySelector("#title")
+
+let movieYear = document.createElement('p')
+movieYear.id = "year"
+let year = document.querySelector("#year")
+
+let movieDescription = document.createElement('p')
+movieDescription.id = "description"
+let description = document.querySelector("#description")
+
+let id = select.value
+   
             fetch("https://ghibliapi.herokuapp.com/films/" + id )
 
             .then((response) =>{
                 return response.json();
-                // console.log(response)
+                console.log(response)
             })
             .then(data => {
-                
-                movieTitle.innerText = data.title
+                console.log(data.title)
+               movieTitle.innerText = data.title
                 // console.log(movieTitle)
                 
                 movieYear.innerText = data.release_date
@@ -67,6 +90,8 @@ const movieProperties = () => {
                 movieDescription.innerText = data.description 
                 // console.log(movieDescription) 
         
+                document.body.appendChild(container);
+
             container.appendChild(movieTitle) 
             container.appendChild(movieYear)
             container.appendChild(movieDescription)
@@ -85,10 +110,11 @@ const movieComment = () => {
     let movieTitle = document.querySelector("h3").innerText
     let input = document.querySelector("#review").value
     let commentList = document.querySelector("#submittedReview")
-    // bold(movieTitle)
     
+    // movieTitle.bold();
+
     let review = document.createElement("li")
-    review.innerText = `${movieTitle}: ${input}`
+    review.innerHTML = `${movieTitle}: ${input}`
 
     // console.log(review)
     // console.log(commentList)
