@@ -13,6 +13,8 @@ const selectButton = (arr) => {
     select.id = "select"
     newDiv.appendChild(select)
 
+    let container = document.createElement("div")
+    container.id = "mainContainer"
     
     for(let i = 0;  i <= arr.length - 1; i++) { 
 
@@ -23,8 +25,10 @@ const selectButton = (arr) => {
         // console.log(arr)
         // console.log(newSelect);
         // console.log(title);
-        
+    document.body.appendChild(container);
+        container.appendChild(select)
     select.appendChild(newSelect);
+    
     }
     select.addEventListener('change', movieProperties)
 
@@ -53,8 +57,7 @@ function fetchMovie() {
 const movieProperties = () => {
 let select = document.querySelector("#select")
 
-let container = document.createElement("div")
-container.id = "mainContainer"
+let container = document.querySelector("#mainContainer")
 
 let innerContainer = document.createElement('div')
 innerContainer.id = "innerContainer"
@@ -90,7 +93,6 @@ let id = select.value
                 movieDescription.innerText = data.description 
                 // console.log(movieDescription) 
         
-                document.body.appendChild(container);
 
             container.appendChild(movieTitle) 
             container.appendChild(movieYear)
@@ -107,18 +109,27 @@ let id = select.value
 }
 
 const movieComment = () => {
+    let reviewDiv = document.createElement('div')
+    reviewDiv.id = "formContainer"
+
+    let form = document.querySelector('form')
     let movieTitle = document.querySelector("h3").innerText
     let input = document.querySelector("#review").value
-    let commentList = document.querySelector("#submittedReview")
-    
-    // movieTitle.bold();
 
-    let review = document.createElement("li")
-    review.innerHTML = `${movieTitle}: ${input}`
+    let commentList = document.createElement("ul")
+    commentList.id = "submittedReview"
+    
+        document.body.appendChild(reviewDiv)
+        // reviewDiv.appendChild(form)
+        reviewDiv.appendChild(commentList)
+
+    if(movieTitle && input){
+        let review = document.createElement("li")
+        review.innerHTML = `${movieTitle}: ${input}`
+        commentList.appendChild(review)
+        }
 
     // console.log(review)
     // console.log(commentList)
-
-    commentList.appendChild(review)
-
+    
 }
