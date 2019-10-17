@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     fetchMovie();
-    formListener();
+   
+    formListener()
+
 
 })
 
@@ -13,8 +15,7 @@ const selectButton = (arr) => {
     select.id = "select"
     newDiv.appendChild(select)
 
-    let container = document.createElement("div")
-    container.id = "mainContainer"
+    let container = document.querySelector("div")
     
     for(let i = 0;  i <= arr.length - 1; i++) { 
 
@@ -25,8 +26,8 @@ const selectButton = (arr) => {
         // console.log(arr)
         // console.log(newSelect);
         // console.log(title);
-    document.body.appendChild(container);
-        container.appendChild(select)
+
+    newDiv.appendChild(select)
     select.appendChild(newSelect);
     
     }
@@ -99,6 +100,8 @@ let id = select.value
             container.appendChild(movieDescription)
             })
             }
+
+
             
  const formListener = () => {
      let form = document.querySelector('#form')
@@ -109,10 +112,11 @@ let id = select.value
 }
 
 const movieComment = () => {
+    let form = document.querySelector('form')
+    
     let reviewDiv = document.createElement('div')
     reviewDiv.id = "formContainer"
-
-    let form = document.querySelector('form')
+   
     let movieTitle = document.querySelector("h3").innerText
     let input = document.querySelector("#review").value
 
@@ -120,7 +124,7 @@ const movieComment = () => {
     commentList.id = "submittedReview"
     
         document.body.appendChild(reviewDiv)
-        // reviewDiv.appendChild(form)
+        reviewDiv.appendChild(form)
         reviewDiv.appendChild(commentList)
 
     if(movieTitle && input){
