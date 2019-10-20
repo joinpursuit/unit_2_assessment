@@ -19,6 +19,11 @@ header{
     flex-direction: row-reverse;
 }
 
+ header img{ 
+    width: 200px;
+    height: 150px;
+} 
+
 #mainContainer {
     display: block;
     top: 5px;
