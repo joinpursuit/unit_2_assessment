@@ -10,13 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const selectButton = (arr) => {
     let newDiv = document.querySelector('#selectButton')
-
-    let select = document.createElement("select")
-    select.id = "select"
-    newDiv.appendChild(select)
-
-    let container = document.querySelector("div")
     
+    let select = document.querySelector("select")
+    select.id = "select"
+
     for(let i = 0;  i <= arr.length - 1; i++) { 
 
         let newSelect = document.createElement("option");
@@ -24,14 +21,14 @@ const selectButton = (arr) => {
         newSelect.innerText  = arr[i].title;
         
         // console.log(arr)
-        // console.log(newSelect);
+        console.log(newSelect);
         // console.log(title);
 
     newDiv.appendChild(select)
     select.appendChild(newSelect);
     
     }
-    select.addEventListener('change', movieProperties)
+    select.addEventListener('change', createMovieProperties)
 
  }
 
@@ -55,37 +52,44 @@ function fetchMovie() {
     })
 }
 
-const movieProperties = () => {
-let select = document.querySelector("#select")
+const createMovieProperties =() => {
+    let innerContainer = document.querySelector('#innerContainer')
 
-let container = document.querySelector("#mainContainer")
+    let movieTitle = document.createElement('h3')
+    movieTitle.id = "title"
+    // let title = document.querySelector("#title")
+    
+    let movieYear = document.createElement('p')
+    movieYear.id = "year"
+    // let year = document.querySelector("#year")
+    
+    let movieDescription = document.createElement('p')
+    movieDescription.id = "description"
+    // let description = document.querySelector("#description")
 
-let innerContainer = document.createElement('div')
-innerContainer.id = "innerContainer"
+    innerContainer.append(movieTitle, movieYear, movieDescription) 
 
-let movieTitle = document.createElement('h3')
-movieTitle.id = "title"
-let title = document.querySelector("#title")
+    
+    fetchMovieProperties()
+}
 
-let movieYear = document.createElement('p')
-movieYear.id = "year"
-let year = document.querySelector("#year")
+const fetchMovieProperties = () => {
+    let select = document.querySelector("#select")
+    let id = select.value
 
-let movieDescription = document.createElement('p')
-movieDescription.id = "description"
-let description = document.querySelector("#description")
+    let movieTitle = document.querySelector('#title')
+    let movieYear = document.querySelector('#year')
+    let movieDescription = document.querySelector("#description")
 
-let id = select.value
-   
-            fetch("https://ghibliapi.herokuapp.com/films/" + id )
+     fetch("https://ghibliapi.herokuapp.com/films/" + id )
 
             .then((response) =>{
                 return response.json();
-                console.log(response)
+                // console.log(response)
             })
             .then(data => {
                 console.log(data.title)
-               movieTitle.innerText = data.title
+                movieTitle.innerText = data.title
                 // console.log(movieTitle)
                 
                 movieYear.innerText = data.release_date
@@ -93,11 +97,7 @@ let id = select.value
         
                 movieDescription.innerText = data.description 
                 // console.log(movieDescription) 
-        
-
-            container.appendChild(movieTitle) 
-            container.appendChild(movieYear)
-            container.appendChild(movieDescription)
+            
             })
             }
 
@@ -112,26 +112,24 @@ let id = select.value
 }
 
 const movieComment = () => {
-    let form = document.querySelector('form')
-    
-    let reviewDiv = document.createElement('div')
-    reviewDiv.id = "formContainer"
-   
+    let form = document.querySelector('#formContainer')
     let movieTitle = document.querySelector("h3").innerText
-    let input = document.querySelector("#review").value
+    let input = document.querySelector("#review")
 
     let commentList = document.createElement("ul")
     commentList.id = "submittedReview"
     
-        document.body.appendChild(reviewDiv)
-        reviewDiv.appendChild(form)
-        reviewDiv.appendChild(commentList)
+        
+        form.appendChild(commentList)
 
     if(movieTitle && input){
         let review = document.createElement("li")
-        review.innerHTML = `${movieTitle}: ${input}`
+        review.innerHTML = `<b>${movieTitle}:</b> ${input.value}`
         commentList.appendChild(review)
+        input.value = ""
+        input.placeholder = "submit review"
         }
+
 
     // console.log(review)
     // console.log(commentList)
