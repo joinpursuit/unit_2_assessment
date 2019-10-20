@@ -1,28 +1,22 @@
+ 
 body{
-   height: 100vh;
+   width: 100%;
     background-color:lavender;
+    font-family: "Monospace";
+    display: flex;
+    flex-direction: column;
 }
 
 header{
     background-color: lightblue;
-    top: 5px;
-    left: 40px;
     display: flex;
     flex-wrap: wrap;
-    margin: 15px auto;
-    height: 165px;
+    margin: 30px auto;
+    padding: 10px;
+    height: 150px;
     width: 70%;
     justify-content: space-between;
     flex-direction: row-reverse;
-}
-
-header img{ 
-    /* background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png); */
-    /* position: relative; */
-   
-    width: 200px;
-    height: 150px;
-    /* z-index: 5; */
 }
 
 #mainContainer {
@@ -31,7 +25,11 @@ header img{
     left: 40px;
     margin: 15px auto;
     height: 165px;
-    width: 70%;
+    width: 60%;
     
+}
+
+#review{
+    width: 400px;
 }
 
