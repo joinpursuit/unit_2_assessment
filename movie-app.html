@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Owen's SG Movie App</title>
+    <link rel= 'stylesheet' href= 'movie-app.css'>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src='movie-app1.js'></script>
+</head>
+<body>
+    <div id=header>
+    <img src= "https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png"
+    height= "150px" width= "350px">
+    <h1>Ghibli Review App</h1>
+    </div>
+    <div class='main-area'>
+    <select id='select-movie'>
+        <option value ='Select Movie Below'></option>
+    </select>
+    <button type="button" id='randomize-movie'>Random Movie</button>
+    <div id='maincontent'></div>
+    <form id='form'>
+        <input type='text' placeholder='How was it?' id='write-review'>
+        <input type='submit' name='Post-Review' id='post-review'>
+    </form>
+    <ul id='reviews'></ul>
+    </div>
+</body>
+</html>
