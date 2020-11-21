@@ -1,0 +1,50 @@
+body {
+  background-color: lavender;
+  font-style: ;
+}
+
+header {
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/1200px-Studio_Ghibli_logo.svg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: skyblue;
+  height: 150px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 50px;
+  padding: 10px;
+  font-family: "Nova Mono", monospace;
+}
+
+h1,
+h3 {
+  font-family: "Nova Mono", monospace;
+}
+#main {
+  padding-top: 15px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+}
+
+input {
+  width: 400px;
+}
+
+form {
+  font-family: "Open Sans", sans-serif;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+li {
+  font-family: "Open Sans", sans-serif;
+  padding-top: 5px;
+  padding-left: 2%;
+  list-style: none;
+}
