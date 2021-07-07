@@ -1,0 +1,40 @@
+ 
+body{
+   width: 100%;
+    background-color:lavender;
+    font-family: "Monospace";
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background-color: lightblue;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    padding: 10px;
+    height: 150px;
+    width: 70%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+ header img{ 
+    width: 200px;
+    height: 150px;
+} 
+
+#mainContainer {
+    display: block;
+    top: 5px;
+    left: 40px;
+    margin: 15px auto;
+    height: 165px;
+    width: 60%;
+    
+}
+
+#review{
+    width: 400px;
+}
+
